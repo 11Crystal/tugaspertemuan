@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - Worldwide Trade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      color: #c0392b;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #c0392b;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #c0392b;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.07);
+    }
+
+    .caption {
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #555;
+      border-top: 1px solid #eee;
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 0.5rem;
+      }
+
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+  <h1>Worldwide Trade</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="products.html">Products</a>
+    <a href="news.html">News</a>
+    <a href="gallery.html"class="active">Gallery</a>
+    <a href="faq.html">FAQ</a>
+    <a href="careers.html">Careers</a>
+    <a href="partners.html">Partners</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+  <main>
+    <h2>Our Gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="img/fair.jpg" alt="International Trade Fair">
+        <div class="caption">Participating at an international trade fair in Frankfurt, Germany.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/showcase.jpg" alt="Product Showcase">
+        <div class="caption">A showcase of our best-selling imported products from Asia and Europe.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/warehouse.jpg" alt="Shipping Warehouse">
+        <div class="caption">Our central warehouse ready for global distribution and logistics.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/meeting.jpg" alt="Business Team Meeting">
+        <div class="caption">Our management team discussing new strategies for overseas expansion.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/handling.jpg" alt="Import Goods Handling">
+        <div class="caption">Careful handling of imported goods to ensure top-quality delivery.</div>
+      </div>
+      <div class="gallery-item">
+        <img src="img/event.jpg" alt="Client Event">
+        <div class="caption">A special event with our international partners and loyal customers.</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Worldwide Trade Co. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Worldwide Trade - Global Imports & Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background-color: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: #c0392b;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #c0392b;
+    }
+
+    .hero {
+      background: url('img/shoppingcart.jpg') no-repeat center center/cover;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      padding: 2rem;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero a {
+      background-color: #c0392b;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .hero a:hover {
+      background-color: #a93226;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #c0392b;
+      font-size: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact p {
+      margin: 0.5rem 0;
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 0.5rem;
+      }
+
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Worldwide Trade</h1>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="products.html">Products</a>
+      <a href="news.html">News</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="faq.html">FAQ</a>
+      <a href="careers.html">Careers</a>
+      <a href="partners.html">Partners</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Connecting You to Global Trade</h2>
+    <a href="#services">Explore Services</a>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">About Us</h2>
+    <p style="text-align: center;">
+      For over a decade, Worldwide Trade has helped bridge the gap between global suppliers and local markets. We ensure quality, speed, and reliability in the delivery of international goods.
+    </p>
+  </section>
+
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Global Sourcing</h3>
+        <p>Verified suppliers worldwide for all your business needs.</p>
+      </div>
+      <div class="card">
+        <h3>Quality Assurance</h3>
+        <p>We audit, inspect, and verify every order you place.</p>
+      </div>
+      <div class="card">
+        <h3>End-to-End Logistics</h3>
+        <p>Complete international delivery from factory to front door.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <h2 class="section-title">Why Choose Us?</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Trusted Network</h3>
+        <p>Hundreds of pre-vetted manufacturers and logistics partners.</p>
+      </div>
+      <div class="card">
+        <h3>24/7 Support</h3>
+        <p>Our team is available day and night to support your operations.</p>
+      </div>
+      <div class="card">
+        <h3>Flexible Pricing</h3>
+        <p>Competitive rates that scale with your business growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <p>Email: <a href="mailto:contact@worldwidetrade.com">contact@worldwidetrade.com</a></p>
+    <p>Phone: +62 812 3344 5566</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Worldwide Trade Co. All rights reserved.</p>
+    <div>
+      <a href="#">LinkedIn</a> |
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a>
+    </div>
+  </footer>
+
+</body>
+</html>
