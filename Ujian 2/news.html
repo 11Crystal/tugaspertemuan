@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>News & Press - Worldwide Trade | Latest Company Updates & Media Coverage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004d99;
+      --secondary: #ff6b35;
+      --accent: #00d4aa;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --border: #e2e8f0;
+      --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55528 100%);
+      --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(0, 102, 204, 0.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--light);
+      color: var(--primary);
+      padding-left: 2rem;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Page Content Styles */
+    .page-content {
+      padding-top: 80px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      justify-content: center;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* News Filters */
+    .news-filters {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--border);
+      background: white;
+      color: var(--text-primary);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* News Grid */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .news-image {
+      height: 200px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+    }
+
+    .news-content {
+      padding: 2rem;
+    }
+
+    .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .news-category {
+      background: var(--accent);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .news-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .news-excerpt {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .read-more {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .read-more:hover {
+      color: var(--primary-dark);
+    }
+
+    /* Featured News */
+    .featured-news {
+      background: var(--light);
+      border-radius: 16px;
+      padding: 3rem;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+    .featured-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .featured-content {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .featured-btn {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .featured-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Media Kit Section */
+    .media-kit {
+      background: white;
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .media-kit h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .media-resources {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .media-resource {
+      background: var(--light);
+      padding: 2rem;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .media-resource:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .resource-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .resource-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .download-btn {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .mobile-menu { display: flex; }
+      .news-grid { grid-template-columns: 1fr; }
+      .news-filters { justify-content: flex-start; }
+      .media-resources { grid-template-columns: 1fr; }
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .news-card {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Worldwide Trade</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🏢 Company ▼</a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="history.html">Company History</a>
+            <a href="team.html">Our Team</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="careers.html">Careers</a>
+            <a href="awards.html">Awards & Recognition</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🛠️ Services ▼</a>
+          <div class="dropdown-menu">
+            <a href="global-sourcing.html">Global Sourcing</a>
+            <a href="logistics.html">Logistics & Shipping</a>
+            <a href="quality-assurance.html">Quality Assurance</a>
+            <a href="trade-finance.html">Trade Finance</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📦 Products ▼</a>
+          <div class="dropdown-menu">
+            <a href="products.html">All Products</a>
+            <a href="electronics.html">Electronics</a>
+            <a href="textiles.html">Textiles & Apparel</a>
+            <a href="machinery.html">Machinery</a>
+            <a href="chemicals.html">Chemicals</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📊 Resources ▼</a>
+          <div class="dropdown-menu">
+            <a href="market-insights.html">Market Insights</a>
+            <a href="trade-guides.html">Trade Guides</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="tools.html">Tools & Calculators</a>
+          </div>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+        <li><a href="quote.html" class="cta-button">Get Quote</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-content">
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>News & Press</span>
+        </nav>
+        <h1>News & Press</h1>
+        <p>Stay updated with the latest company news, industry insights, press releases, and media coverage from Worldwide Trade.</p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Featured News -->
+      <section class="featured-news">
+        <h2 class="featured-title">🏆 Worldwide Trade Wins Global Trade Excellence Award 2024</h2>
+        <div class="featured-content">
+          We're proud to announce that Worldwide Trade has been honored with the Global Trade Excellence Award 2024 by the International Trade Association. This recognition highlights our commitment to innovative solutions, sustainable practices, and exceptional customer service in the global trade industry.
+        </div>
+        <a href="#" class="featured-btn">
+          📄 Read Full Press Release
+        </a>
+      </section>
+
+      <!-- News Filters -->
+      <div class="news-filters">
+        <a href="#" class="filter-btn active" data-filter="all">All News</a>
+        <a href="#" class="filter-btn" data-filter="press">Press Releases</a>
+        <a href="#" class="filter-btn" data-filter="awards">Awards</a>
+        <a href="#" class="filter-btn" data-filter="expansion">Business Expansion</a>
+        <a href="#" class="filter-btn" data-filter="partnerships">Partnerships</a>
+        <a href="#" class="filter-btn" data-filter="industry">Industry News</a>
+      </div>
+
+      <!-- News Grid -->
+      <div class="news-grid">
+        <article class="news-card" data-category="press">
+          <div class="news-image">📈</div>
+          <div class="news-content">
+            <div class="news-meta">
+              <span class="news-category">Press Release</span>
+              <span>March 15, 2025</span>
+            </div>
+            <h3 class="news-title">Q1 2025 Results Show Record Growth in Asia-Pacific Trade</h3>
+            <p class="news-excerpt">Worldwide Trade reports a 35% increase in trade volume across Asia-Pacific markets in the first quarter, driven by expanded partnerships and enhanced digital platform capabilities.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </article>
+
+        <article class="news-card" data-category="partnerships">
+          <div class="news-image">🤝</div>
+          <div class="news-content">
+            <div class="news-meta">
+              <span class="news-category">Partnership</span>
+              <span>March 8, 2025</span>
+            </div>
+            <h3 class="news-title">Strategic Partnership with Leading European Logistics Network</h3>
+            <p class="news-excerpt">New alliance enhances our European distribution capabilities and reduces delivery times by 25% for customers importing to EU markets.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </article>
+
+        <article class="news-card" data-category="expansion">
+          <div class="news-image">🌍</div>
+          <div class="news-content">
+            <div class="news-meta">
+              <span class="news-category">Expansion</span>
+              <span>February 28, 2025</span>
+            </div>
+            <h3 class="news-title">Opening New Regional Office in Dubai</h3>
+            <p class="news-excerpt">Expanding our Middle East presence with a new 5,000 sq ft facility to better serve clients in the MENA region and enhance trade corridors.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </article>
+
+        <article class="news-card" data-category="awards">
+          <div class="news-image">🏆</div>
+          <div class="news-content">
+            <div class="news-meta">
+              <span class="news-category">Recognition</span>
+              <span>February 20, 2025</span>
+            </div>
+            <h3 class="news-title">Named 'Innovation Leader' in Trade Technology</h3>
+            <p class="news-excerpt">World Trade Forum recognizes our AI-powered supply chain optimization platform as the most innovative solution in the industry.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </article>
+
+        <article class="news-card" data-category="industry">
+          <div class="news-image">💡</div>
+          <div class="news-content">
+            <div class="news-meta">
+              <span class="news-category">Industry Insight</span>
+              <span>February 15, 2025</span>
+            </div>
+            <h3 class="news-title">CEO Speaks at Global Trade Summit 2025</h3>
+            <p class="news-excerpt">Our CEO presented insights on sustainable trade practices and digital transformation trends shaping the future of international commerce.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </article>
+
+        <article class="news-card" data-category="press">
+          <div class="news-image">🚀</div>
+          <div class="news-content">
+            <div class="news-meta">
+              <span class="news-category">Press Release</span>
+              <span>February 5, 2025</span>
+            </div>
+            <h3 class="news-title">Launch of Advanced AI-Powered Trade Analytics Platform</h3>
+            <p class="news-excerpt">Revolutionary platform provides real-time market insights, predictive analytics, and automated compliance monitoring for enhanced trade decision-making.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </article>
+
+        <article class="news-card" data-category="partnerships">
+          <div class="news-image">🔗</div>
+          <div class="news-content">
+            <div class="news-meta">
+              <span class="news-category">Partnership</span>
+              <span>January 25, 2025</span>
+            </div>
+            <h3 class="news-title">Collaboration with Green Shipping Initiative</h3>
+            <p class="news-excerpt">Joining forces with leading sustainability organizations to reduce carbon footprint in international shipping and promote eco-friendly trade practices.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </article>
+
+        <article class="news-card" data-category="expansion">
+          <div class="news-image">📊</div>
+          <div class="news-content">
+            <div class="news-meta">
+              <span class="news-category">Growth</span>
+              <span>January 15, 2025</span>
+            </div>
+            <h3 class="news-title">500th Global Partner Milestone Achieved</h3>
+            <p class="news-excerpt">Reaching a significant milestone with our 500th verified global partner, expanding our network across 50+ countries and enhancing service capabilities.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Media Kit Section -->
+      <section class="media-kit">
+        <h2>📎 Media Kit & Resources</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Download our official media resources, including company logos, executive photos, fact sheets, and press materials.</p>
+        
+        <div class="media-resources">
+          <div class="media-resource">
+            <div class="resource-icon">🖼️</div>
+            <h3 class="resource-title">Company Logos</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">High-resolution logos in various formats</p>
+            <a href="#" class="download-btn">Download ZIP</a>
+          </div>
+
+          <div class="media-resource">
+            <div class="resource-icon">👤</div>
+            <h3 class="resource-title">Executive Photos</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Professional headshots of leadership team</p>
+            <a href="#" class="download-btn">Download ZIP</a>
+          </div>
+
+          <div class="media-resource">
+            <div class="resource-icon">📋</div>
+            <h3 class="resource-title">Company Fact Sheet</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Key statistics and company information</p>
+            <a href="#" class="download-btn">Download PDF</a>
+          </div>
+
+          <div class="media-resource">
+            <div class="resource-icon">📄</div>
+            <h3 class="resource-title">Press Kit</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Complete media package with all materials</p>
+            <a href="#" class="download-btn">Download ZIP</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="history.html">Company History</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="leadership.html">Leadership</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="awards.html">Awards & Recognition</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="global-sourcing.html">Global Sourcing</a></li>
+          <li><a href="logistics.html">Logistics & Shipping</a></li>
+          <li><a href="quality-assurance.html">Quality Assurance</a></li>
+          <li><a href="trade-finance.html">Trade Finance</a></li>
+          <li><a href="consultation.html">Consultation</a></li>
+        </ul>
+      </div>
+
+      
+      <div class="footer-section">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="textiles.html">Textiles & Apparel</a></li>
+          <li><a href="machinery.html">Machinery</a></li>
+          <li><a href="chemicals.html">Chemicals</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="market-insights.html">Market Insights</a></li>
+          <li><a href="trade-guides.html">Trade Guides</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="tools.html">Tools & Calculators</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="news.html">News & Press</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:info@worldwidetrade.com">info@worldwidetrade.com</a></li>
+          <li><a href="tel:+1-555-TRADE-01">+1 (555) TRADE-01</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="quote.html">Get Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Worldwide Trade Co. All rights reserved. | <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // News filtering
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Update active filter
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        const newsCards = document.querySelectorAll('.news-card');
+        
+        newsCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.6s ease-out forwards';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    // Observe news cards
+    document.querySelectorAll('.news-card, .media-resource').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>

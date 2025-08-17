@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Market Insights - Global Trade Intelligence | Worldwide Trade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004d99;
+      --secondary: #ff6b35;
+      --accent: #00d4aa;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --border: #e2e8f0;
+      --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55528 100%);
+      --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles - Same as previous pages */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(0, 102, 204, 0.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--light);
+      color: var(--primary);
+      padding-left: 2rem;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Page Content */
+    .page-content {
+      padding-top: 80px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="chart" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0,10 L10,0 L20,5 L20,20 L0,20 Z" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23chart)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .content-section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    /* Market Dashboard */
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .dashboard-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .dashboard-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+    }
+
+    .dashboard-value {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .dashboard-label {
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .dashboard-change {
+      font-size: 0.9rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .dashboard-change.positive {
+      background: rgba(0, 212, 170, 0.1);
+      color: var(--accent);
+    }
+
+    .dashboard-change.negative {
+      background: rgba(255, 107, 53, 0.1);
+      color: var(--secondary);
+    }
+
+    /* Insights Grid */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+    }
+
+    .insight-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .insight-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
+
+    .insight-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .insight-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .insight-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .insight-meta {
+      flex: 1;
+    }
+
+    .insight-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .insight-date {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .insight-content {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .insight-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .insight-tag {
+      background: var(--light);
+      color: var(--text-primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .insight-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-read-more {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-read-more:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Market Trends */
+    .trends-section {
+      background: var(--light);
+      padding: 4rem 0;
+      margin: 4rem 0;
+    }
+
+    .trends-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .trends-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .trend-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .trend-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .trend-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .trend-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .trend-indicator {
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .trend-indicator.up {
+      background: rgba(0, 212, 170, 0.1);
+      color: var(--accent);
+    }
+
+    .trend-indicator.down {
+      background: rgba(255, 107, 53, 0.1);
+      color: var(--secondary);
+    }
+
+    .trend-indicator.stable {
+      background: rgba(113, 128, 150, 0.1);
+      color: var(--text-secondary);
+    }
+
+    .trend-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .trend-impact {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    /* Newsletter Section */
+    .newsletter {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .newsletter-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .newsletter h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+
+    .newsletter-input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .newsletter-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
+    }
+
+    .newsletter-btn {
+      background: var(--gradient-accent);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .mobile-menu { display: flex; }
+      .dashboard { grid-template-columns: repeat(2, 1fr); }
+      .insights-grid { grid-template-columns: 1fr; }
+      .trends-grid { grid-template-columns: 1fr; }
+      .newsletter-form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Worldwide Trade</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🏢 Company ▼</a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="history.html">Company History</a>
+            <a href="team.html">Our Team</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="careers.html">Careers</a>
+            <a href="awards.html">Awards & Recognition</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🛠️ Services ▼</a>
+          <div class="dropdown-menu">
+            <a href="global-sourcing.html">Global Sourcing</a>
+            <a href="logistics.html">Logistics & Shipping</a>
+            <a href="quality-assurance.html">Quality Assurance</a>
+            <a href="trade-finance.html">Trade Finance</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📦 Products ▼</a>
+          <div class="dropdown-menu">
+            <a href="products.html">All Products</a>
+            <a href="electronics.html">Electronics</a>
+            <a href="textiles.html">Textiles & Apparel</a>
+            <a href="machinery.html">Machinery</a>
+            <a href="chemicals.html">Chemicals</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📊 Resources ▼</a>
+          <div class="dropdown-menu">
+            <a href="market-insights.html">Market Insights</a>
+            <a href="trade-guides.html">Trade Guides</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="tools.html">Tools & Calculators</a>
+          </div>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+        <li><a href="quote.html" class="cta-button">Get Quote</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-content">
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a> / <a href="#resources">Resources</a> / Market Insights
+        </nav>
+        <h1>Global Market Insights</h1>
+        <p>Stay ahead with real-time market intelligence, trade analytics, and economic trends that impact your business decisions.</p>
+      </div>
+    </section>
+
+    <main class="main-content">
+      <!-- Market Dashboard -->
+      <section class="content-section">
+        <h2 class="section-title">Live Market Dashboard</h2>
+        <p class="section-subtitle">Real-time data and key performance indicators for global trade markets</p>
+        
+        <div class="dashboard">
+          <div class="dashboard-card">
+            <div class="dashboard-icon">📈</div>
+            <div class="dashboard-value">$2.4T</div>
+            <div class="dashboard-label">Global Trade Volume</div>
+            <div class="dashboard-change positive">↗ +8.2% YoY</div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-icon">🚢</div>
+            <div class="dashboard-value">156M</div>
+            <div class="dashboard-label">TEU Containers</div>
+            <div class="dashboard-change positive">↗ +12.5% YoY</div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-icon">⏱️</div>
+            <div class="dashboard-value">18.2</div>
+            <div class="dashboard-label">Avg. Transit Days</div>
+            <div class="dashboard-change negative">↗ +2.1 days</div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-icon">💱</div>
+            <div class="dashboard-value">$1.08</div>
+            <div class="dashboard-label">USD/EUR Exchange</div>
+            <div class="dashboard-change positive">↗ +0.8%</div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-icon">🛢️</div>
+            <div class="dashboard-value">$84.50</div>
+            <div class="dashboard-label">Oil Price (Brent)</div>
+            <div class="dashboard-change negative">↘ -3.2%</div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-icon">📊</div>
+            <div class="dashboard-value">68.4</div>
+            <div class="dashboard-label">Global PMI Index</div>
+            <div class="dashboard-change positive">↗ +2.8 pts</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Latest Insights -->
+      <section class="content-section">
+        <h2 class="section-title">Latest Market Intelligence</h2>
+        <p class="section-subtitle">Expert analysis and insights from our global trade specialists</p>
+        
+        <div class="insights-grid">
+          <div class="insight-card">
+            <div class="insight-header">
+              <div class="insight-icon">🌏</div>
+              <div class="insight-meta">
+                <h3 class="insight-title">Asia-Pacific Trade Surge</h3>
+                <div class="insight-date">January 8, 2025</div>
+              </div>
+            </div>
+            <div class="insight-content">
+              The Asia-Pacific region is experiencing unprecedented trade growth, with manufacturing exports reaching record highs. Key drivers include technological innovation, supply chain diversification, and emerging market expansion.
+            </div>
+            <div class="insight-tags">
+              <span class="insight-tag">Asia-Pacific</span>
+              <span class="insight-tag">Manufacturing</span>
+              <span class="insight-tag">Growth</span>
+            </div>
+            <div class="insight-actions">
+              <a href="#" class="btn-read-more">Read Full Analysis</a>
+            </div>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-header">
+              <div class="insight-icon">⚡</div>
+              <div class="insight-meta">
+                <h3 class="insight-title">Green Technology Exports</h3>
+                <div class="insight-date">January 6, 2025</div>
+              </div>
+            </div>
+            <div class="insight-content">
+              Renewable energy equipment and clean technology exports are driving new trade patterns. Solar panels, wind turbines, and battery technology represent the fastest-growing export categories globally.
+            </div>
+            <div class="insight-tags">
+              <span class="insight-tag">Clean Tech</span>
+              <span class="insight-tag">Renewable Energy</span>
+              <span class="insight-tag">Innovation</span>
+            </div>
+            <div class="insight-actions">
+              <a href="#" class="btn-read-more">Read Full Analysis</a>
+            </div>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-header">
+              <div class="insight-icon">🚚</div>
+              <div class="insight-meta">
+                <h3 class="insight-title">Supply Chain Resilience</h3>
+                <div class="insight-date">January 4, 2025</div>
+              </div>
+            </div>
+            <div class="insight-content">
+              Companies are investing heavily in supply chain diversification and nearshoring strategies. This shift is creating new trade corridors and opportunities for regional manufacturing hubs.
+            </div>
+            <div class="insight-tags">
+              <span class="insight-tag">Supply Chain</span>
+              <span class="insight-tag">Nearshoring</span>
+              <span class="insight-tag">Risk Management</span>
+            </div>
+            <div class="insight-actions">
+              <a href="#" class="btn-read-more">Read Full Analysis</a>
+            </div>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-header">
+              <div class="insight-icon">💻</div>
+              <div class="insight-meta">
+                <h3 class="insight-title">Digital Trade Revolution</h3>
+                <div class="insight-date">January 2, 2025</div>
+              </div>
+            </div>
+            <div class="insight-content">
+              Digital transformation is reshaping global trade with AI-powered logistics, blockchain documentation, and IoT tracking becoming standard practices across major trade routes.
+            </div>
+            <div class="insight-tags">
+              <span class="insight-tag">Digital Trade</span>
+              <span class="insight-tag">AI</span>
+              <span class="insight-tag">Blockchain</span>
+            </div>
+            <div class="insight-actions">
+              <a href="#" class="btn-read-more">Read Full Analysis</a>
+            </div>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-header">
+              <div class="insight-icon">🏭</div>
+              <div class="insight-meta">
+                <h3 class="insight-title">Industrial Commodities Outlook</h3>
+                <div class="insight-date">December 30, 2024</div>
+              </div>
+            </div>
+            <div class="insight-content">
+              Raw material prices show mixed signals as global manufacturing demand stabilizes. Steel, copper, and rare earth elements face supply constraints while demand remains robust in key sectors.
+            </div>
+            <div class="insight-tags">
+              <span class="insight-tag">Commodities</span>
+              <span class="insight-tag">Manufacturing</span>
+              <span class="insight-tag">Price Analysis</span>
+            </div>
+            <div class="insight-actions">
+              <a href="#" class="btn-read-more">Read Full Analysis</a>
+            </div>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-header">
+              <div class="insight-icon">🌍</div>
+              <div class="insight-meta">
+                <h3 class="insight-title">Emerging Market Opportunities</h3>
+                <div class="insight-date">December 28, 2024</div>
+              </div>
+            </div>
+            <div class="insight-content">
+              African and Latin American markets present significant growth opportunities for exporters. Infrastructure development and middle-class expansion are driving demand for consumer goods and industrial equipment.
+            </div>
+            <div class="insight-tags">
+              <span class="insight-tag">Emerging Markets</span>
+              <span class="insight-tag">Growth</span>
+              <span class="insight-tag">Opportunity</span>
+            </div>
+            <div class="insight-actions">
+              <a href="#" class="btn-read-more">Read Full Analysis</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Market Trends -->
+      <section class="trends-section">
+        <div class="trends-container">
+          <h2 class="section-title">Key Market Trends</h2>
+          <p class="section-subtitle">Monitor critical trends that shape global trade patterns</p>
+          
+          <div class="trends-grid">
+            <div class="trend-card">
+              <div class="trend-header">
+                <h3 class="trend-title">E-commerce Growth</h3>
+                <div class="trend-indicator up">📈 Rising</div>
+              </div>
+              <div class="trend-description">
+                Cross-border e-commerce continues to expand rapidly, with B2B online platforms facilitating more international transactions than ever before.
+              </div>
+              <div class="trend-impact">Impact: Increased demand for small parcel logistics and faster delivery services</div>
+            </div>
+
+            <div class="trend-card">
+              <div class="trend-header">
+                <h3 class="trend-title">Sustainability Focus</h3>
+                <div class="trend-indicator up">🌱 Accelerating</div>
+              </div>
+              <div class="trend-description">
+                Environmental regulations and consumer preferences are driving demand for sustainable products and carbon-neutral shipping options.
+              </div>
+              <div class="trend-impact">Impact: Premium pricing for eco-friendly products and green logistics solutions</div>
+            </div>
+
+            <div class="trend-card">
+              <div class="trend-header">
+                <h3 class="trend-title">Trade Route Diversification</h3>
+                <div class="trend-indicator up">🗺️ Expanding</div>
+              </div>
+              <div class="trend-description">
+                Companies are establishing alternative trade routes to reduce dependency on traditional corridors and improve supply chain resilience.
+              </div>
+              <div class="trend-impact">Impact: New opportunities in previously underutilized shipping lanes and ports</div>
+            </div>
+
+            <div class="trend-card">
+              <div class="trend-header">
+                <h3 class="trend-title">Currency Volatility</h3>
+                <div class="trend-indicator stable">💱 Moderate</div>
+              </div>
+              <div class="trend-description">
+                Exchange rate fluctuations continue to affect trade margins, with businesses increasingly using hedging strategies to manage currency risk.
+              </div>
+              <div class="trend-impact">Impact: Growing demand for trade finance and currency hedging products</div>
+            </div>
+
+            <div class="trend-card">
+              <div class="trend-header">
+                <h3 class="trend-title">Automation Adoption</h3>
+                <div class="trend-indicator up">🤖 Growing</div>
+              </div>
+              <div class="trend-description">
+                Warehouse automation and AI-driven logistics are becoming standard, improving efficiency and reducing operational costs across the supply chain.
+              </div>
+              <div class="trend-impact">Impact: Faster processing times and reduced labor costs in logistics operations</div>
+            </div>
+
+            <div class="trend-card">
+              <div class="trend-header">
+                <h3 class="trend-title">Regional Trade Agreements</h3>
+                <div class="trend-indicator up">📋 Increasing</div>
+              </div>
+              <div class="trend-description">
+                New bilateral and multilateral trade agreements are creating preferential trading conditions and reducing barriers for member countries.
+              </div>
+              <div class="trend-impact">Impact: Lower tariffs and streamlined procedures for qualifying trade relationships</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter Signup -->
+      <section class="newsletter">
+        <div class="newsletter-container">
+          <h2>Stay Informed with Market Intelligence</h2>
+          <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem;">Get weekly market insights, trade alerts, and exclusive analysis delivered to your inbox.</p>
+          
+          <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+          </form>
+          
+          <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 1rem;">Join 25,000+ trade professionals who trust our insights</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="history.html">Company History</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="awards.html">Awards & Recognition</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="global-sourcing.html">Global Sourcing</a></li>
+            <li><a href="logistics.html">Logistics & Shipping</a></li>
+            <li><a href="quality-assurance.html">Quality Assurance</a></li>
+            <li><a href="trade-finance.html">Trade Finance</a></li>
+            <li><a href="consultation.html">Consultation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Products</h3>
+          <ul>
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="electronics.html">Electronics</a></li>
+            <li><a href="textiles.html">Textiles & Apparel</a></li>
+            <li><a href="machinery.html">Machinery</a></li>
+            <li><a href="chemicals.html">Chemicals</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="market-insights.html">Market Insights</a></li>
+            <li><a href="trade-guides.html">Trade Guides</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="tools.html">Tools & Calculators</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="mailto:insights@worldwidetrade.com">insights@worldwidetrade.com</a></li>
+            <li><a href="tel:+1-555-TRADE-01">+1 (555) TRADE-01</a></li>
+            <li><a href="quote.html">Get Quote</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Worldwide Trade Co. All rights reserved. | <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Newsletter form handling
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input').value;
+      if (email) {
+        alert('Thank you for subscribing to our market insights! You will receive weekly updates.');
+        this.querySelector('input').value = '';
+      }
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.dashboard-card, .insight-card, .trend-card').forEach(card => {
+      observer.observe(card);
+    });
+
+    // Add fadeInUp animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Live data simulation
+    function updateDashboard() {
+      const dashboardValues = document.querySelectorAll('.dashboard-value');
+      dashboardValues.forEach(value => {
+        // Simulate slight data changes
+        const currentText = value.textContent;
+        if (currentText.includes(')) {
+          // Add subtle animation effect
+          value.style.transform = 'scale(1.05)';
+          setTimeout(() => {
+            value.style.transform = 'scale(1)';
+          }, 200);
+        }
+      });
+    }
+
+    // Update dashboard every 30 seconds
+    setInterval(updateDashboard, 30000);
+  </script>
+</body>
+</html>

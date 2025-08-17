@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trade Guides - International Trade Resources | Worldwide Trade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004d99;
+      --secondary: #ff6b35;
+      --accent: #00d4aa;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --border: #e2e8f0;
+      --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55528 100%);
+      --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(0, 102, 204, 0.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--light);
+      color: var(--primary);
+      padding-left: 2rem;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Page Content */
+    .page-content {
+      padding-top: 80px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #2d5aa0 0%, #1e3a8a 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="guides" width="30" height="30" patternUnits="userSpaceOnUse"><rect x="5" y="5" width="20" height="2" fill="%23ffffff" opacity="0.1"/><rect x="5" y="10" width="15" height="2" fill="%23ffffff" opacity="0.08"/><rect x="5" y="15" width="18" height="2" fill="%23ffffff" opacity="0.09"/><circle cx="25" cy="12" r="3" fill="none" stroke="%23ffffff" stroke-width="1" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23guides)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .content-section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    /* Search Bar */
+    .search-section {
+      background: var(--light);
+      padding: 3rem 0;
+      margin-bottom: 4rem;
+    }
+
+    .search-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .search-form {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      border: 2px solid var(--border);
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    }
+
+    .search-btn {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .search-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .popular-searches {
+      text-align: center;
+    }
+
+    .popular-searches h3 {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .search-tags {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .search-tag {
+      background: white;
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .search-tag:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Guide Categories */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .category-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .category-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+
+    .category-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .category-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .category-guides {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .category-guides li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .category-guides li:last-child {
+      border-bottom: none;
+    }
+
+    .guide-icon {
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .guide-link {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      flex: 1;
+    }
+
+    .guide-link:hover {
+      color: var(--primary);
+    }
+
+    .btn-view-all {
+      background: var(--gradient-secondary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-view-all:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Featured Guides */
+    .featured-section {
+      background: var(--light);
+      padding: 4rem 0;
+      margin: 4rem 0;
+    }
+
+    .featured-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .featured-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .featured-image {
+      height: 200px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+    }
+
+    .featured-content {
+      padding: 2rem;
+    }
+
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .featured-badge {
+      background: var(--gradient-accent);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .featured-date {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .featured-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .featured-excerpt {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .featured-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .featured-tag {
+      background: var(--light);
+      color: var(--text-primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .btn-read-guide {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-read-guide:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .cta-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta {
+      background: var(--gradient-accent);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .btn-cta.secondary {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .mobile-menu { display: flex; }
+      .categories-grid { grid-template-columns: 1fr; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .search-form { flex-direction: column; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .search-tags { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .search-tags { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Worldwide Trade</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🏢 Company ▼</a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="history.html">Company History</a>
+            <a href="team.html">Our Team</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="careers.html">Careers</a>
+            <a href="awards.html">Awards & Recognition</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🛠️ Services ▼</a>
+          <div class="dropdown-menu">
+            <a href="global-sourcing.html">Global Sourcing</a>
+            <a href="logistics.html">Logistics & Shipping</a>
+            <a href="quality-assurance.html">Quality Assurance</a>
+            <a href="trade-finance.html">Trade Finance</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📦 Products ▼</a>
+          <div class="dropdown-menu">
+            <a href="products.html">All Products</a>
+            <a href="electronics.html">Electronics</a>
+            <a href="textiles.html">Textiles & Apparel</a>
+            <a href="machinery.html">Machinery</a>
+            <a href="chemicals.html">Chemicals</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📊 Resources ▼</a>
+          <div class="dropdown-menu">
+            <a href="market-insights.html">Market Insights</a>
+            <a href="trade-guides.html">Trade Guides</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="tools.html">Tools & Calculators</a>
+          </div>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+        <li><a href="quote.html" class="cta-button">Get Quote</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-content">
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a> / <a href="#resources">Resources</a> / Trade Guides
+        </nav>
+        <h1>International Trade Guides</h1>
+        <p>Comprehensive guides and resources to navigate international trade successfully. From import basics to advanced logistics strategies.</p>
+      </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="search-container">
+        <form class="search-form">
+          <input type="text" class="search-input" placeholder="Search trade guides, regulations, documentation..." id="search-input">
+          <button type="submit" class="search-btn">🔍 Search</button>
+        </form>
+        
+        <div class="popular-searches">
+          <h3>Popular Topics:</h3>
+          <div class="search-tags">
+            <a href="#" class="search-tag">Import Documentation</a>
+            <a href="#" class="search-tag">Customs Procedures</a>
+            <a href="#" class="search-tag">Trade Finance</a>
+            <a href="#" class="search-tag">Shipping Terms</a>
+            <a href="#" class="search-tag">Quality Control</a>
+            <a href="#" class="search-tag">Market Entry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="main-content">
+      <!-- Guide Categories -->
+      <section class="content-section">
+        <h2 class="section-title">Guide Categories</h2>
+        <p class="section-subtitle">Explore our comprehensive collection of trade guides organized by topic</p>
+        
+        <div class="categories-grid">
+          <div class="category-card">
+            <div class="category-icon">📋</div>
+            <h3 class="category-title">Import Documentation</h3>
+            <p class="category-description">Master the essential paperwork and documentation required for successful international imports.</p>
+            <ul class="category-guides">
+              <li><span class="guide-icon">📄</span><a href="#" class="guide-link">Commercial Invoice Guide</a></li>
+              <li><span class="guide-icon">📄</span><a href="#" class="guide-link">Bill of Lading Explained</a></li>
+              <li><span class="guide-icon">📄</span><a href="#" class="guide-link">Certificate of Origin</a></li>
+              <li><span class="guide-icon">📄</span><a href="#" class="guide-link">Packing List Requirements</a></li>
+              <li><span class="guide-icon">📄</span><a href="#" class="guide-link">Insurance Documents</a></li>
+            </ul>
+            <a href="#" class="btn-view-all">View All Guides →</a>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon">🛃</div>
+            <h3 class="category-title">Customs & Regulations</h3>
+            <p class="category-description">Navigate customs procedures, tariffs, and trade regulations across different countries.</p>
+            <ul class="category-guides">
+              <li><span class="guide-icon">⚖️</span><a href="#" class="guide-link">Customs Clearance Process</a></li>
+              <li><span class="guide-icon">⚖️</span><a href="#" class="guide-link">Tariff Classification</a></li>
+              <li><span class="guide-icon">⚖️</span><a href="#" class="guide-link">Free Trade Agreements</a></li>
+              <li><span class="guide-icon">⚖️</span><a href="#" class="guide-link">Import Restrictions</a></li>
+              <li><span class="guide-icon">⚖️</span><a href="#" class="guide-link">Duty Calculations</a></li>
+            </ul>
+            <a href="#" class="btn-view-all">View All Guides →</a>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon">🚚</div>
+            <h3 class="category-title">Shipping & Logistics</h3>
+            <p class="category-description">Optimize your supply chain with guides on shipping methods, terms, and logistics planning.</p>
+            <ul class="category-guides">
+              <li><span class="guide-icon">🚢</span><a href="#" class="guide-link">Incoterms 2020 Guide</a></li>
+              <li><span class="guide-icon">🚢</span><a href="#" class="guide-link">Ocean Freight Basics</a></li>
+              <li><span class="guide-icon">🚢</span><a href="#" class="guide-link">Air Cargo Guidelines</a></li>
+              <li><span class="guide-icon">🚢</span><a href="#" class="guide-link">Container Selection</a></li>
+              <li><span class="guide-icon">🚢</span><a href="#" class="guide-link">Freight Forwarders</a></li>
+            </ul>
+            <a href="#" class="btn-view-all">View All Guides →</a>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon">💰</div>
+            <h3 class="category-title">Trade Finance</h3>
+            <p class="category-description">Understand financing options, payment methods, and risk management in international trade.</p>
+            <ul class="category-guides">
+              <li><span class="guide-icon">💳</span><a href="#" class="guide-link">Letters of Credit</a></li>
+              <li><span class="guide-icon">💳</span><a href="#" class="guide-link">Payment Terms</a></li>
+              <li><span class="guide-icon">💳</span><a href="#" class="guide-link">Trade Credit Insurance</a></li>
+              <li><span class="guide-icon">💳</span><a href="#" class="guide-link">Currency Hedging</a></li>
+              <li><span class="guide-icon">💳</span><a href="#" class="guide-link">Export Financing</a></li>
+            </ul>
+            <a href="#" class="btn-view-all">View All Guides →</a>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon">✅</div>
+            <h3 class="category-title">Quality Control</h3>
+            <p class="category-description">Ensure product quality with comprehensive inspection and testing guidelines.</p>
+            <ul class="category-guides">
+              <li><span class="guide-icon">🔍</span><a href="#" class="guide-link">Pre-shipment Inspection</a></li>
+              <li><span class="guide-icon">🔍</span><a href="#" class="guide-link">Quality Standards</a></li>
+              <li><span class="guide-icon">🔍</span><a href="#" class="guide-link">Testing Procedures</a></li>
+              <li><span class="guide-icon">🔍</span><a href="#" class="guide-link">Certification Requirements</a></li>
+              <li><span class="guide-icon">🔍</span><a href="#" class="guide-link">Supplier Audits</a></li>
+            </ul>
+            <a href="#" class="btn-view-all">View All Guides →</a>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon">🌍</div>
+            <h3 class="category-title">Market Entry</h3>
+            <p class="category-description">Strategic guides for entering new international markets and expanding your business globally.</p>
+            <ul class="category-guides">
+              <li><span class="guide-icon">📈</span><a href="#" class="guide-link">Market Research</a></li>
+              <li><span class="guide-icon">📈</span><a href="#" class="guide-link">Competitive Analysis</a></li>
+              <li><span class="guide-icon">📈</span><a href="#" class="guide-link">Distribution Strategies</a></li>
+              <li><span class="guide-icon">📈</span><a href="#" class="guide-link">Legal Requirements</a></li>
+              <li><span class="guide-icon">📈</span><a href="#" class="guide-link">Cultural Considerations</a></li>
+            </ul>
+            <a href="#" class="btn-view-all">View All Guides →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Guides -->
+      <section class="featured-section">
+        <div class="featured-container">
+          <h2 class="section-title">Featured Trade Guides</h2>
+          <p class="section-subtitle">Our most popular and comprehensive guides to help you succeed in international trade</p>
+          
+          <div class="featured-grid">
+            <div class="featured-card">
+              <div class="featured-image">📚</div>
+              <div class="featured-content">
+                <div class="featured-meta">
+                  <div class="featured-badge">New</div>
+                  <div class="featured-date">January 8, 2025</div>
+                </div>
+                <h3 class="featured-title">Complete Import Guide 2025</h3>
+                <p class="featured-excerpt">Everything you need to know about importing products internationally, from initial planning to final delivery. Updated with latest regulations and procedures.</p>
+                <div class="featured-tags">
+                  <span class="featured-tag">Import</span>
+                  <span class="featured-tag">Beginner</span>
+                  <span class="featured-tag">Complete</span>
+                </div>
+                <a href="#" class="btn-read-guide">Read Guide →</a>
+              </div>
+            </div>
+
+            <div class="featured-card">
+              <div class="featured-image">🛃</div>
+              <div class="featured-content">
+                <div class="featured-meta">
+                  <div class="featured-badge">Updated</div>
+                  <div class="featured-date">January 5, 2025</div>
+                </div>
+                <h3 class="featured-title">Customs Clearance Masterclass</h3>
+                <p class="featured-excerpt">Master the complexities of customs procedures across major markets. Avoid delays and reduce costs with expert strategies and insider tips.</p>
+                <div class="featured-tags">
+                  <span class="featured-tag">Customs</span>
+                  <span class="featured-tag">Advanced</span>
+                  <span class="featured-tag">Tips</span>
+                </div>
+                <a href="#" class="btn-read-guide">Read Guide →</a>
+              </div>
+            </div>
+        </main>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="history.html">Company History</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="awards.html">Awards & Recognition</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="global-sourcing.html">Global Sourcing</a></li>
+            <li><a href="logistics.html">Logistics & Shipping</a></li>
+            <li><a href="quality-assurance.html">Quality Assurance</a></li>
+            <li><a href="trade-finance.html">Trade Finance</a></li>
+            <li><a href="consultation.html">Consultation</a></li>
+          </ul>
+        </div>
+    </main>
+        <div class="footer-section">
+          <h3>Products</h3>
+          <ul>
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="electronics.html">Electronics</a></li>
+            <li><a href="textiles.html">Textiles & Apparel</a></li>
+            <li><a href="machinery.html">Machinery</a></li>
+            <li><a href="chemicals.html">Chemicals</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="market-insights.html">Market Insights</a></li>
+            <li><a href="trade-guides.html">Trade Guides</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="tools.html">Tools & Calculators</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="mailto:insights@worldwidetrade.com">insights@worldwidetrade.com</a></li>
+            <li><a href="tel:+1-555-TRADE-01">+1 (555) TRADE-01</a></li>
+            <li><a href="quote.html">Get Quote</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Worldwide Trade Co. All rights reserved. | <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
+      </div>
+    </footer>
+  </div>

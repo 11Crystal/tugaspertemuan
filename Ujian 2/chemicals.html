@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chemicals - Industrial Raw Materials & Chemical Products | Worldwide Trade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004d99;
+      --secondary: #ff6b35;
+      --accent: #00d4aa;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --border: #e2e8f0;
+      --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55528 100%);
+      --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(0, 102, 204, 0.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--light);
+      color: var(--primary);
+      padding-left: 2rem;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Page Content Styles */
+    .page-content {
+      padding-top: 80px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .content-section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .card:hover::before {
+      left: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .card-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-features li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .card-features li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .safety-banner {
+      background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 16px;
+      text-align: center;
+      margin: 4rem 0;
+    }
+
+    .safety-banner h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .safety-banner p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background: rgba(0, 102, 204, 0.1);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .cta-section {
+      background: var(--light);
+      padding: 4rem 2rem;
+      text-align: center;
+      border-radius: 20px;
+      margin: 4rem 0;
+    }
+
+    .cta-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .mobile-menu { display: flex; }
+      .grid { grid-template-columns: 1fr; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Worldwide Trade</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🏢 Company ▼</a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="history.html">Company History</a>
+            <a href="team.html">Our Team</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="careers.html">Careers</a>
+            <a href="awards.html">Awards & Recognition</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🛠️ Services ▼</a>
+          <div class="dropdown-menu">
+            <a href="global-sourcing.html">Global Sourcing</a>
+            <a href="logistics.html">Logistics & Shipping</a>
+            <a href="quality-assurance.html">Quality Assurance</a>
+            <a href="trade-finance.html">Trade Finance</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📦 Products ▼</a>
+          <div class="dropdown-menu">
+            <a href="products.html">All Products</a>
+            <a href="electronics.html">Electronics</a>
+            <a href="textiles.html">Textiles & Apparel</a>
+            <a href="machinery.html">Machinery</a>
+            <a href="chemicals.html">Chemicals</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📊 Resources ▼</a>
+          <div class="dropdown-menu">
+            <a href="market-insights.html">Market Insights</a>
+            <a href="trade-guides.html">Trade Guides</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="tools.html">Tools & Calculators</a>
+          </div>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+        <li><a href="quote.html" class="cta-button">Get Quote</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Content -->
+  <div class="page-content">
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <a href="products.html">Products</a>
+        <span>›</span>
+        <span>Chemicals</span>
+      </div>
+      <h1>Chemical Products</h1>
+      <p>Industrial raw materials, specialty chemicals, and chemical products from verified global suppliers with comprehensive quality assurance.</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Chemical Categories -->
+      <div class="content-section">
+        <h2 class="section-title">Chemical Product Categories</h2>
+        <p class="section-subtitle">Comprehensive range of industrial chemicals and raw materials sourced from certified manufacturers worldwide</p>
+        
+        <div class="grid">
+          <div class="card">
+            <div class="card-icon">🧪</div>
+            <h3 class="card-title">Industrial Chemicals</h3>
+            <p class="card-description">Essential chemicals for manufacturing processes, including acids, alkalis, and solvents for various industrial applications.</p>
+            <ul class="card-features">
+              <li>Sulfuric acid, hydrochloric acid, nitric acid</li>
+              <li>Sodium hydroxide, potassium hydroxide</li>
+              <li>Industrial solvents and reagents</li>
+              <li>Process chemicals and catalysts</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">⚗️</div>
+            <h3 class="card-title">Specialty Chemicals</h3>
+            <p class="card-description">High-performance chemicals for specific applications, including additives, coatings, and advanced materials.</p>
+            <ul class="card-features">
+              <li>Performance additives and modifiers</li>
+              <li>Coating and surface treatment chemicals</li>
+              <li>Electronic grade chemicals</li>
+              <li>Pharmaceutical intermediates</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🏭</div>
+            <h3 class="card-title">Petrochemicals</h3>
+            <p class="card-description">Petroleum-derived chemicals including plastics, resins, and synthetic materials for various industries.</p>
+            <ul class="card-features">
+              <li>Polyethylene, polypropylene, PVC</li>
+              <li>Synthetic resins and polymers</li>
+              <li>Rubber and elastomer materials</li>
+              <li>Petrochemical feedstocks</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🌱</div>
+            <h3 class="card-title">Agricultural Chemicals</h3>
+            <p class="card-description">Fertilizers, pesticides, and agricultural support chemicals for crop protection and enhancement.</p>
+            <ul class="card-features">
+              <li>NPK fertilizers and micronutrients</li>
+              <li>Crop protection chemicals</li>
+              <li>Soil treatment products</li>
+              <li>Growth regulators and enhancers</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🧴</div>
+            <h3 class="card-title">Personal Care Chemicals</h3>
+            <p class="card-description">Ingredients for cosmetics, personal care, and household products manufacturing.</p>
+            <ul class="card-features">
+              <li>Surfactants and emulsifiers</li>
+              <li>Preservatives and stabilizers</li>
+              <li>Fragrance and flavor compounds</li>
+              <li>Active ingredients and additives</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🔬</div>
+            <h3 class="card-title">Laboratory Chemicals</h3>
+            <p class="card-description">High-purity chemicals and reagents for research, analysis, and quality control applications.</p>
+            <ul class="card-features">
+              <li>Analytical grade reagents</li>
+              <li>Reference standards and indicators</li>
+              <li>Buffer solutions and standards</li>
+              <li>Research chemicals and materials</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Safety & Compliance -->
+      <div class="safety-banner">
+        <h3>🛡️ Safety & Compliance First</h3>
+        <p>All chemical products are handled with strict adherence to international safety standards, proper documentation, and regulatory compliance. We ensure safe transportation, storage, and delivery of all chemical materials.</p>
+      </div>
+
+      <!-- Quality Assurance -->
+      <div class="content-section">
+        <h2 class="section-title">Quality Assurance & Testing</h2>
+        <p class="section-subtitle">Comprehensive quality control measures ensure the purity, composition, and safety of all chemical products</p>
+        
+        <div class="grid">
+          <div class="card">
+            <div class="card-icon">🎯</div>
+            <h3 class="card-title">Purity Testing</h3>
+            <p class="card-description">Advanced analytical testing to verify chemical purity, composition, and specification compliance before shipment.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">📋</div>
+            <h3 class="card-title">Regulatory Compliance</h3>
+            <p class="card-description">Full compliance with REACH, GHS, OSHA, and international chemical regulations with proper documentation.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">🚛</div>
+            <h3 class="card-title">Safe Transportation</h3>
+            <p class="card-description">Specialized logistics for hazardous materials with proper packaging, labeling, and transportation certifications.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <h3>Need Chemical Products?</h3>
+        <p>Our chemical sourcing experts can help you find the right products, ensure compliance, and arrange safe delivery. Contact us for competitive quotes and reliable supply solutions.</p>
+        <div class="cta-buttons">
+          <a href="quote.html" class="btn btn-primary">Request Chemical Quote</a>
+          <a href="contact.html" class="btn btn-secondary">Consult Our Experts</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="history.html">Company History</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="leadership.html">Leadership</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="awards.html">Awards & Recognition</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="global-sourcing.html">Global Sourcing</a></li>
+          <li><a href="logistics.html">Logistics & Shipping</a></li>
+          <li><a href="quality-assurance.html">Quality Assurance</a></li>
+          <li><a href="trade-finance.html">Trade Finance</a></li>
+          <li><a href="consultation.html">Consultation</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="textiles.html">Textiles & Apparel</a></li>
+          <li><a href="machinery.html">Machinery</a></li>
+          <li><a href="chemicals.html">Chemicals</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="market-insights.html">Market Insights</a></li>
+          <li><a href="trade-guides.html">Trade Guides</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="tools.html">Tools & Calculators</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="news.html">News & Press</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:info@worldwidetrade.com">info@worldwidetrade.com</a></li>
+          <li><a href="tel:+1-555-TRADE-01">+1 (555) TRADE-01</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="quote.html">Get Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Worldwide Trade Co. All rights reserved. | <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    document.querySelector('.mobile-menu').addEventListener('click', function() {
+      console.log('Mobile menu clicked');
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Animation observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>

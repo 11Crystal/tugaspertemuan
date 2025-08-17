@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trade Tools & Calculators | Worldwide Trade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004d99;
+      --secondary: #ff6b35;
+      --accent: #00d4aa;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --border: #e2e8f0;
+      --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55528 100%);
+      --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(0, 102, 204, 0.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--light);
+      color: var(--primary);
+      padding-left: 2rem;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Page Content Styles */
+    .page-content {
+      padding-top: 80px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .page-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Tools Grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .tool-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .tool-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .tool-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .tool-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .tool-description {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    }
+
+    .form-select {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 1rem;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    }
+
+    .calculate-btn {
+      width: 100%;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+    }
+
+    .calculate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .result-section {
+      background: var(--light);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .result-section.show {
+      display: block;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .result-title {
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .result-label {
+      color: var(--text-secondary);
+    }
+
+    .result-value {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* Currency Converter Specific */
+    .currency-display {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    .currency-amount {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .currency-label {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .exchange-rate {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Quick Reference Section */
+    .quick-reference {
+      background: var(--light);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-top: 4rem;
+    }
+
+    .reference-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .reference-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .reference-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .reference-card h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .reference-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .reference-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .reference-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .mobile-menu { display: flex; }
+      .tools-grid { 
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .tool-card {
+        padding: 2rem;
+      }
+      .currency-amount {
+        font-size: 2rem;
+      }
+      .reference-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .tool-card {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Worldwide Trade</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🏢 Company ▼</a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="history.html">Company History</a>
+            <a href="team.html">Our Team</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="careers.html">Careers</a>
+            <a href="awards.html">Awards & Recognition</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🛠️ Services ▼</a>
+          <div class="dropdown-menu">
+            <a href="global-sourcing.html">Global Sourcing</a>
+            <a href="logistics.html">Logistics & Shipping</a>
+            <a href="quality-assurance.html">Quality Assurance</a>
+            <a href="trade-finance.html">Trade Finance</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📦 Products ▼</a>
+          <div class="dropdown-menu">
+            <a href="products.html">All Products</a>
+            <a href="electronics.html">Electronics</a>
+            <a href="textiles.html">Textiles & Apparel</a>
+            <a href="machinery.html">Machinery</a>
+            <a href="chemicals.html">Chemicals</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📊 Resources ▼</a>
+          <div class="dropdown-menu">
+            <a href="market-insights.html">Market Insights</a>
+            <a href="trade-guides.html">Trade Guides</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="tools.html">Tools & Calculators</a>
+          </div>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+        <li><a href="quote.html" class="cta-button">Get Quote</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Content -->
+  <div class="page-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>›</span>
+        <a href="#">Resources</a>
+        <span>›</span>
+        <span>Tools & Calculators</span>
+      </div>
+      <h1>Trade Tools & Calculators</h1>
+      <p>Powerful tools and calculators to help you make informed decisions in international trade. Calculate costs, convert currencies, and plan your imports with precision.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Tools Grid -->
+      <div class="tools-grid">
+        <!-- Shipping Cost Calculator -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">🚢</div>
+            <h3 class="tool-title">Shipping Cost Calculator</h3>
+          </div>
+          <p class="tool-description">Calculate estimated shipping costs for your international cargo based on weight, dimensions, and destination.</p>
+          
+          <div class="form-group">
+            <label class="form-label">Cargo Weight (kg)</label>
+            <input type="number" class="form-input" id="weight" placeholder="Enter weight in kg">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Dimensions (L × W × H cm)</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem;">
+              <input type="number" class="form-input" id="length" placeholder="Length">
+              <input type="number" class="form-input" id="width" placeholder="Width">
+              <input type="number" class="form-input" id="height" placeholder="Height">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Shipping Method</label>
+            <select class="form-select" id="shippingMethod">
+              <option value="air">Air Freight</option>
+              <option value="sea">Sea Freight</option>
+              <option value="express">Express Courier</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Destination</label>
+            <select class="form-select" id="destination">
+              <option value="us">United States</option>
+              <option value="eu">European Union</option>
+              <option value="uk">United Kingdom</option>
+              <option value="ca">Canada</option>
+              <option value="au">Australia</option>
+              <option value="jp">Japan</option>
+              <option value="cn">China</option>
+            </select>
+          </div>
+          
+          <button class="calculate-btn" onclick="calculateShipping()">Calculate Shipping Cost</button>
+          
+          <div class="result-section" id="shippingResult">
+            <div class="result-title">Estimated Shipping Cost</div>
+            <div class="result-item">
+              <span class="result-label">Base Shipping Cost:</span>
+              <span class="result-value" id="baseCost">$0.00</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Fuel Surcharge:</span>
+              <span class="result-value" id="fuelCost">$0.00</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Insurance (Optional):</span>
+              <span class="result-value" id="insuranceCost">$0.00</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Total Estimated Cost:</span>
+              <span class="result-value" id="totalShipping">$0.00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Currency Converter -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">💱</div>
+            <h3 class="tool-title">Currency Converter</h3>
+          </div>
+          <p class="tool-description">Convert between currencies with real-time exchange rates for accurate international trade pricing.</p>
+          
+          <div class="form-group">
+            <label class="form-label">Amount</label>
+            <input type="number" class="form-input" id="currencyAmount" placeholder="Enter amount" value="1000">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">From Currency</label>
+            <select class="form-select" id="fromCurrency">
+              <option value="USD">USD - US Dollar</option>
+              <option value="EUR">EUR - Euro</option>
+              <option value="GBP">GBP - British Pound</option>
+              <option value="JPY">JPY - Japanese Yen</option>
+              <option value="CNY">CNY - Chinese Yuan</option>
+              <option value="CAD">CAD - Canadian Dollar</option>
+              <option value="AUD">AUD - Australian Dollar</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">To Currency</label>
+            <select class="form-select" id="toCurrency">
+              <option value="EUR">EUR - Euro</option>
+              <option value="USD">USD - US Dollar</option>
+              <option value="GBP">GBP - British Pound</option>
+              <option value="JPY">JPY - Japanese Yen</option>
+              <option value="CNY">CNY - Chinese Yuan</option>
+              <option value="CAD">CAD - Canadian Dollar</option>
+              <option value="AUD">AUD - Australian Dollar</option>
+            </select>
+          </div>
+          
+          <button class="calculate-btn" onclick="convertCurrency()">Convert Currency</button>
+          
+          <div class="currency-display" id="currencyResult" style="display: none;">
+            <div class="currency-amount" id="convertedAmount">€850.00</div>
+            <div class="currency-label" id="currencyLabel">Euros</div>
+          </div>
+          
+          <div class="exchange-rate" id="exchangeRate" style="display: none;">
+            Exchange Rate: 1 USD = 0.85 EUR
+          </div>
+        </div>
+
+        <!-- Import Duty Calculator -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">📋</div>
+            <h3 class="tool-title">Import Duty Calculator</h3>
+          </div>
+          <p class="tool-description">Estimate import duties, taxes, and fees for your shipments to plan your total import costs accurately.</p>
+          
+          <div class="form-group">
+            <label class="form-label">Product Value (USD)</label>
+            <input type="number" class="form-input" id="productValue" placeholder="Enter product value">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Product Category</label>
+            <select class="form-select" id="productCategory">
+              <option value="electronics">Electronics</option>
+              <option value="textiles">Textiles & Clothing</option>
+              <option value="machinery">Machinery & Equipment</option>
+              <option value="chemicals">Chemicals</option>
+              <option value="food">Food & Beverages</option>
+              <option value="automotive">Automotive Parts</option>
+              <option value="furniture">Furniture</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Destination Country</label>
+            <select class="form-select" id="dutyDestination">
+              <option value="us">United States</option>
+              <option value="eu">European Union</option>
+              <option value="uk">United Kingdom</option>
+              <option value="ca">Canada</option>
+              <option value="au">Australia</option>
+            </select>
+          </div>
+          
+          <button class="calculate-btn" onclick="calculateDuty()">Calculate Import Duty</button>
+          
+          <div class="result-section" id="dutyResult">
+            <div class="result-title">Import Cost Breakdown</div>
+            <div class="result-item">
+              <span class="result-label">Product Value:</span>
+              <span class="result-value" id="dutyProductValue">$0.00</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Import Duty:</span>
+              <span class="result-value" id="dutyAmount">$0.00</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">VAT/Sales Tax:</span>
+              <span class="result-value" id="vatAmount">$0.00</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Handling Fees:</span>
+              <span class="result-value" id="handlingFees">$0.00</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Total Import Cost:</span>
+              <span class="result-value" id="totalDuty">$0.00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CBM Calculator -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">📦</div>
+            <h3 class="tool-title">CBM Calculator</h3>
+          </div>
+          <p class="tool-description">Calculate the cubic meter (CBM) volume of your cargo for accurate shipping quotes and container planning.</p>
+          
+          <div class="form-group">
+            <label class="form-label">Dimensions per Unit (cm)</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem;">
+              <input type="number" class="form-input" id="cbmLength" placeholder="Length">
+              <input type="number" class="form-input" id="cbmWidth" placeholder="Width">
+              <input type="number" class="form-input" id="cbmHeight" placeholder="Height">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Number of Units</label>
+            <input type="number" class="form-input" id="cbmUnits" placeholder="Enter quantity" value="1">
+          </div>
+          
+          <button class="calculate-btn" onclick="calculateCBM()">Calculate CBM</button>
+          
+          <div class="result-section" id="cbmResult">
+            <div class="result-title">Volume Calculation</div>
+            <div class="result-item">
+              <span class="result-label">Volume per Unit:</span>
+              <span class="result-value" id="volumePerUnit">0.000 CBM</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Total Volume:</span>
+              <span class="result-value" id="totalVolume">0.000 CBM</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Container Utilization (20ft):</span>
+              <span class="result-value" id="container20ft">0%</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Container Utilization (40ft):</span>
+              <span class="result-value" id="container40ft">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profit Margin Calculator -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">💰</div>
+            <h3 class="tool-title">Profit Margin Calculator</h3>
+          </div>
+          <p class="tool-description">Calculate profit margins and markup percentages to ensure profitable pricing for your imported products.</p>
+          
+          <div class="form-group">
+            <label class="form-label">Product Cost (USD)</label>
+            <input type="number" class="form-input" id="productCost" placeholder="Enter cost per unit">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Shipping Cost per Unit (USD)</label>
+            <input type="number" class="form-input" id="shippingPerUnit" placeholder="Enter shipping cost">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Additional Costs (USD)</label>
+            <input type="number" class="form-input" id="additionalCosts" placeholder="Duties, fees, etc.">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Selling Price (USD)</label>
+            <input type="number" class="form-input" id="sellingPrice" placeholder="Enter selling price">
+          </div>
+          
+          <button class="calculate-btn" onclick="calculateProfit()">Calculate Profit Margin</button>
+          
+          <div class="result-section" id="profitResult">
+            <div class="result-title">Profit Analysis</div>
+            <div class="result-item">
+              <span class="result-label">Total Cost:</span>
+              <span class="result-value" id="totalCost">$0.00</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Gross Profit:</span>
+              <span class="result-value" id="grossProfit">$0.00</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Profit Margin:</span>
+              <span class="result-value" id="profitMargin">0%</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Markup Percentage:</span>
+              <span class="result-value" id="markupPercent">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lead Time Calculator -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">⏱️</div>
+            <h3 class="tool-title">Lead Time Calculator</h3>
+          </div>
+          <p class="tool-description">Estimate total lead times for your import orders including manufacturing, shipping, and customs clearance.</p>
+          
+          <div class="form-group">
+            <label class="form-label">Manufacturing Time (days)</label>
+            <input type="number" class="form-input" id="manufacturingTime" placeholder="Production days">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Shipping Method</label>
+            <select class="form-select" id="leadTimeShipping">
+              <option value="air">Air Freight (3-7 days)</option>
+              <option value="sea">Sea Freight (15-45 days)</option>
+              <option value="express">Express (1-3 days)</option>
+              <option value="truck">Truck/Rail (5-14 days)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Origin Country</label>
+            <select class="form-select" id="originCountry">
+              <option value="cn">China</option>
+              <option value="in">India</option>
+              <option value="vn">Vietnam</option>
+              <option value="th">Thailand</option>
+              <option value="de">Germany</option>
+              <option value="it">Italy</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Order Date</label>
+            <input type="date" class="form-input" id="orderDate">
+          </div>
+          
+          <button class="calculate-btn" onclick="calculateLeadTime()">Calculate Lead Time</button>
+          
+          <div class="result-section" id="leadTimeResult">
+            <div class="result-title">Timeline Breakdown</div>
+            <div class="result-item">
+              <span class="result-label">Manufacturing:</span>
+              <span class="result-value" id="mfgDays">0 days</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Shipping Transit:</span>
+              <span class="result-value" id="transitDays">0 days</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Customs Clearance:</span>
+              <span class="result-value" id="customsDays">3-5 days</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Estimated Delivery Date:</span>
+              <span class="result-value" id="deliveryDate">-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Reference Section -->
+      <section class="quick-reference">
+        <h2 class="reference-title">Quick Reference Guide</h2>
+        <div class="reference-grid">
+          <div class="reference-card">
+            <h4>📏 Standard Container Sizes</h4>
+            <ul class="reference-list">
+              <li><span>20ft Container:</span><span>33.2 CBM</span></li>
+              <li><span>40ft Container:</span><span>67.7 CBM</span></li>
+              <li><span>40ft High Cube:</span><span>76.3 CBM</span></li>
+              <li><span>45ft High Cube:</span><span>86.0 CBM</span></li>
+            </ul>
+          </div>
+
+          <div class="reference-card">
+            <h4>⚖️ Weight Conversions</h4>
+            <ul class="reference-list">
+              <li><span>1 kg:</span><span>2.20 lbs</span></li>
+              <li><span>1 ton (metric):</span><span>1,000 kg</span></li>
+              <li><span>1 ton (US):</span><span>907 kg</span></li>
+              <li><span>1 ton (UK):</span><span>1,016 kg</span></li>
+            </ul>
+          </div>
+
+          <div class="reference-card">
+            <h4>📐 Dimension Conversions</h4>
+            <ul class="reference-list">
+              <li><span>1 inch:</span><span>2.54 cm</span></li>
+              <li><span>1 foot:</span><span>30.48 cm</span></li>
+              <li><span>1 meter:</span><span>3.28 feet</span></li>
+              <li><span>1 CBM:</span><span>35.31 cubic feet</span></li>
+            </ul>
+          </div>
+
+          <div class="reference-card">
+            <h4>🌍 Typical Transit Times</h4>
+            <ul class="reference-list">
+              <li><span>Asia to US (Sea):</span><span>14-18 days</span></li>
+              <li><span>Asia to Europe (Sea):</span><span>20-25 days</span></li>
+              <li><span>Asia to US (Air):</span><span>2-3 days</span></li>
+              <li><span>Europe to US (Sea):</span><span>7-10 days</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="history.html">Company History</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="leadership.html">Leadership</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="awards.html">Awards & Recognition</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="global-sourcing.html">Global Sourcing</a></li>
+          <li><a href="logistics.html">Logistics & Shipping</a></li>
+          <li><a href="quality-assurance.html">Quality Assurance</a></li>
+          <li><a href="trade-finance.html">Trade Finance</a></li>
+          <li><a href="consultation.html">Consultation</a></li>
+        </ul>
+      </div>
+
+      
+      <div class="footer-section">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="textiles.html">Textiles & Apparel</a></li>
+          <li><a href="machinery.html">Machinery</a></li>
+          <li><a href="chemicals.html">Chemicals</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="market-insights.html">Market Insights</a></li>
+          <li><a href="trade-guides.html">Trade Guides</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="tools.html">Tools & Calculators</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="news.html">News & Press</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:info@worldwidetrade.com">info@worldwidetrade.com</a></li>
+          <li><a href="tel:+1-555-TRADE-01">+1 (555) TRADE-01</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="quote.html">Get Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Worldwide Trade Co. All rights reserved. | <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Set today's date as default for order date
+    document.getElementById('orderDate').value = new Date().toISOString().split('T')[0];
+
+    // Shipping Cost Calculator
+    function calculateShipping() {
+      const weight = parseFloat(document.getElementById('weight').value) || 0;
+      const length = parseFloat(document.getElementById('length').value) || 0;
+      const width = parseFloat(document.getElementById('width').value) || 0;
+      const height = parseFloat(document.getElementById('height').value) || 0;
+      const method = document.getElementById('shippingMethod').value;
+      const destination = document.getElementById('destination').value;
+
+      if (weight === 0 || length === 0 || width === 0 || height === 0) {
+        alert('Please enter all shipping details');
+        return;
+      }
+
+      // Calculate volumetric weight
+      const volumetricWeight = (length * width * height) / (method === 'air' ? 6000 : 1000);
+      const chargeableWeight = Math.max(weight, volumetricWeight);
+
+      // Base rates per kg (simplified for demo)
+      const rates = {
+        air: { us: 4.5, eu: 5.2, uk: 5.0, ca: 4.8, au: 6.0, jp: 5.5, cn: 3.8 },
+        sea: { us: 0.8, eu: 1.2, uk: 1.1, ca: 0.9, au: 1.5, jp: 1.3, cn: 0.6 },
+        express: { us: 8.5, eu: 9.2, uk: 9.0, ca: 8.8, au: 12.0, jp: 10.5, cn: 7.8 }
+      };
+
+      const baseRate = rates[method][destination];
+      const baseCost = chargeableWeight * baseRate;
+      const fuelSurcharge = baseCost * 0.15;
+      const insurance = baseCost * 0.05;
+      const total = baseCost + fuelSurcharge + insurance;
+
+      document.getElementById('baseCost').textContent = `${baseCost.toFixed(2)}`;
+      document.getElementById('fuelCost').textContent = `${fuelSurcharge.toFixed(2)}`;
+      document.getElementById('insuranceCost').textContent = `${insurance.toFixed(2)}`;
+      document.getElementById('totalShipping').textContent = `${total.toFixed(2)}`;
+      document.getElementById('shippingResult').classList.add('show');
+    }
+
+    // Currency Converter
+    function convertCurrency() {
+      const amount = parseFloat(document.getElementById('currencyAmount').value) || 0;
+      const fromCurrency = document.getElementById('fromCurrency').value;
+      const toCurrency = document.getElementById('toCurrency').value;
+
+      if (amount === 0) {
+        alert('Please enter an amount to convert');
+        return;
+      }
+
+      // Simplified exchange rates for demo (in real app, use live rates)
+      const exchangeRates = {
+        'USD': { 'EUR': 0.85, 'GBP': 0.73, 'JPY': 110, 'CNY': 6.45, 'CAD': 1.25, 'AUD': 1.35 },
+        'EUR': { 'USD': 1.18, 'GBP': 0.86, 'JPY': 129, 'CNY': 7.59, 'CAD': 1.47, 'AUD': 1.59 },
+        'GBP': { 'USD': 1.37, 'EUR': 1.16, 'JPY': 150, 'CNY': 8.84, 'CAD': 1.71, 'AUD': 1.85 },
+        'JPY': { 'USD': 0.0091, 'EUR': 0.0077, 'GBP': 0.0067, 'CNY': 0.059, 'CAD': 0.011, 'AUD': 0.012 },
+        'CNY': { 'USD': 0.155, 'EUR': 0.132, 'GBP': 0.113, 'JPY': 17.05, 'CAD': 0.194, 'AUD': 0.209 },
+        'CAD': { 'USD': 0.80, 'EUR': 0.68, 'GBP': 0.58, 'JPY': 88, 'CNY': 5.16, 'AUD': 1.08 },
+        'AUD': { 'USD': 0.74, 'EUR': 0.63, 'GBP': 0.54, 'JPY': 81, 'CNY': 4.78, 'CAD': 0.93 }
+      };
+
+      let convertedAmount;
+      let rate;
+
+      if (fromCurrency === toCurrency) {
+        convertedAmount = amount;
+        rate = 1;
+      } else {
+        rate = exchangeRates[fromCurrency][toCurrency];
+        convertedAmount = amount * rate;
+      }
+
+      const currencyNames = {
+        'USD': 'US Dollars', 'EUR': 'Euros', 'GBP': 'British Pounds',
+        'JPY': 'Japanese Yen', 'CNY': 'Chinese Yuan', 'CAD': 'Canadian Dollars',
+        'AUD': 'Australian Dollars'
+      };
+
+      const currencySymbols = {
+        'USD': ', 'EUR': '€', 'GBP': '£', 'JPY': '¥',
+        'CNY': '¥', 'CAD': 'C, 'AUD': 'A
+      };
+
+      document.getElementById('convertedAmount').textContent = 
+        `${currencySymbols[toCurrency]}${convertedAmount.toLocaleString('en-US', {maximumFractionDigits: 2})}`;
+      document.getElementById('currencyLabel').textContent = currencyNames[toCurrency];
+      document.getElementById('exchangeRate').textContent = 
+        `Exchange Rate: 1 ${fromCurrency} = ${rate.toFixed(4)} ${toCurrency}`;
+      
+      document.getElementById('currencyResult').style.display = 'block';
+      document.getElementById('exchangeRate').style.display = 'block';
+    }
+
+    // Import Duty Calculator
+    function calculateDuty() {
+      const value = parseFloat(document.getElementById('productValue').value) || 0;
+      const category = document.getElementById('productCategory').value;
+      const destination = document.getElementById('dutyDestination').value;
+
+      if (value === 0) {
+        alert('Please enter product value');
+        return;
+      }
+
+      // Simplified duty rates for demo
+      const dutyRates = {
+        'electronics': { us: 0.025, eu: 0.035, uk: 0.030, ca: 0.028, au: 0.050 },
+        'textiles': { us: 0.115, eu: 0.095, uk: 0.100, ca: 0.105, au: 0.085 },
+        'machinery': { us: 0.015, eu: 0.025, uk: 0.020, ca: 0.018, au: 0.030 },
+        'chemicals': { us: 0.055, eu: 0.065, uk: 0.060, ca: 0.058, au: 0.075 },
+        'food': { us: 0.085, eu: 0.125, uk: 0.110, ca: 0.095, au: 0.080 },
+        'automotive': { us: 0.025, eu: 0.045, uk: 0.040, ca: 0.035, au: 0.055 },
+        'furniture': { us: 0.075, eu: 0.055, uk: 0.065, ca: 0.070, au: 0.060 }
+      };
+
+      const vatRates = {
+        us: 0.0875, eu: 0.20, uk: 0.20, ca: 0.13, au: 0.10
+      };
+
+      const dutyRate = dutyRates[category][destination];
+      const vatRate = vatRates[destination];
+
+      const dutyAmount = value * dutyRate;
+      const taxableValue = value + dutyAmount;
+      const vatAmount = taxableValue * vatRate;
+      const handlingFee = 25;
+      const totalCost = value + dutyAmount + vatAmount + handlingFee;
+
+      document.getElementById('dutyProductValue').textContent = `${value.toFixed(2)}`;
+      document.getElementById('dutyAmount').textContent = `${dutyAmount.toFixed(2)}`;
+      document.getElementById('vatAmount').textContent = `${vatAmount.toFixed(2)}`;
+      document.getElementById('handlingFees').textContent = `${handlingFee.toFixe

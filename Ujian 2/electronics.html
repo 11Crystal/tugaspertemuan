@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Electronics & Technology Products | Worldwide Trade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004d99;
+      --secondary: #ff6b35;
+      --accent: #00d4aa;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --border: #e2e8f0;
+      --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55528 100%);
+      --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(0, 102, 204, 0.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--light);
+      color: var(--primary);
+      padding-left: 2rem;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Page Content Styles */
+    .page-content {
+      padding-top: 80px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="%23ffffff" opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .page-header .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .content-section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .product-card:hover::before {
+      left: 100%;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .product-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 15px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+
+    .product-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .product-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-features li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .product-features li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-check {
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .stats-section {
+      background: var(--light);
+      padding: 4rem 0;
+      margin: 4rem -2rem;
+    }
+
+    .stats-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
+
+    .brands-section {
+      background: var(--white);
+      padding: 4rem 0;
+    }
+
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .brand-item {
+      background: var(--light);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .brand-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .brand-logo {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .brand-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .brand-description {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .cta-section {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+      margin: 4rem -2rem 0;
+    }
+
+    .cta-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .cta-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta-description {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--gradient-secondary);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .mobile-menu { display: flex; }
+      .grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .brands-grid { grid-template-columns: 1fr; }
+      .stats-section { margin: 4rem -1rem; }
+      .cta-section { margin: 4rem -1rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Worldwide Trade</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🏢 Company ▼</a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="history.html">Company History</a>
+            <a href="team.html">Our Team</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="careers.html">Careers</a>
+            <a href="awards.html">Awards & Recognition</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🛠️ Services ▼</a>
+          <div class="dropdown-menu">
+            <a href="global-sourcing.html">Global Sourcing</a>
+            <a href="logistics.html">Logistics & Shipping</a>
+            <a href="quality-assurance.html">Quality Assurance</a>
+            <a href="trade-finance.html">Trade Finance</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📦 Products ▼</a>
+          <div class="dropdown-menu">
+            <a href="products.html">All Products</a>
+            <a href="electronics.html">Electronics</a>
+            <a href="textiles.html">Textiles & Apparel</a>
+            <a href="machinery.html">Machinery</a>
+            <a href="chemicals.html">Chemicals</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📊 Resources ▼</a>
+          <div class="dropdown-menu">
+            <a href="market-insights.html">Market Insights</a>
+            <a href="trade-guides.html">Trade Guides</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="tools.html">Tools & Calculators</a>
+          </div>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+        <li><a href="quote.html" class="cta-button">Get Quote</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Content -->
+  <div class="page-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <a href="products.html">Products</a>
+          <span>›</span>
+          <span>Electronics</span>
+        </nav>
+        <h1>Electronics & Technology</h1>
+        <p>Cutting-edge electronics and technology products from trusted global manufacturers and suppliers worldwide.</p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Product Categories -->
+      <section class="content-section">
+        <h2 class="section-title">Electronics Product Categories</h2>
+        <p class="section-subtitle">Comprehensive range of electronics and technology products sourced from leading manufacturers across the globe.</p>
+        
+        <div class="grid">
+          <div class="product-card">
+            <div class="product-icon">📱</div>
+            <h3 class="product-title">Consumer Electronics</h3>
+            <p class="product-description">Latest smartphones, tablets, laptops, and personal electronics from top global brands.</p>
+            <ul class="product-features">
+              <li><span class="feature-check">✓</span> Smartphones & Tablets</li>
+              <li><span class="feature-check">✓</span> Laptops & Computers</li>
+              <li><span class="feature-check">✓</span> Audio & Video Equipment</li>
+              <li><span class="feature-check">✓</span> Gaming Devices</li>
+              <li><span class="feature-check">✓</span> Wearable Technology</li>
+            </ul>
+          </div>
+
+          <div class="product-card">
+            <div class="product-icon">🏠</div>
+            <h3 class="product-title">Home Appliances</h3>
+            <p class="product-description">Energy-efficient home appliances and smart home solutions for modern living.</p>
+            <ul class="product-features">
+              <li><span class="feature-check">✓</span> Kitchen Appliances</li>
+              <li><span class="feature-check">✓</span> Washing Machines</li>
+              <li><span class="feature-check">✓</span> Air Conditioners</li>
+              <li><span class="feature-check">✓</span> Smart Home Systems</li>
+              <li><span class="feature-check">✓</span> Vacuum Cleaners</li>
+            </ul>
+          </div>
+
+          <div class="product-card">
+            <div class="product-icon">⚡</div>
+            <h3 class="product-title">Electronic Components</h3>
+            <p class="product-description">High-quality electronic components and parts for manufacturing and assembly.</p>
+            <ul class="product-features">
+              <li><span class="feature-check">✓</span> Semiconductors</li>
+              <li><span class="feature-check">✓</span> Circuit Boards</li>
+              <li><span class="feature-check">✓</span> Capacitors & Resistors</li>
+              <li><span class="feature-check">✓</span> Connectors & Cables</li>
+              <li><span class="feature-check">✓</span> LED Components</li>
+            </ul>
+          </div>
+
+          <div class="product-card">
+            <div class="product-icon">🖥️</div>
+            <h3 class="product-title">Computer Hardware</h3>
+            <p class="product-description">Professional-grade computer hardware and networking equipment for businesses.</p>
+            <ul class="product-features">
+              <li><span class="feature-check">✓</span> Servers & Workstations</li>
+              <li><span class="feature-check">✓</span> Storage Solutions</li>
+              <li><span class="feature-check">✓</span> Networking Equipment</li>
+              <li><span class="feature-check">✓</span> Graphics Cards</li>
+              <li><span class="feature-check">✓</span> Memory & Processors</li>
+            </ul>
+          </div>
+
+          <div class="product-card">
+            <div class="product-icon">📡</div>
+            <h3 class="product-title">Telecommunications</h3>
+            <p class="product-description">Advanced telecommunications equipment and wireless communication solutions.</p>
+            <ul class="product-features">
+              <li><span class="feature-check">✓</span> 5G Equipment</li>
+              <li><span class="feature-check">✓</span> Routers & Switches</li>
+              <li><span class="feature-check">✓</span> Antennas & Transmitters</li>
+              <li><span class="feature-check">✓</span> Fiber Optic Components</li>
+              <li><span class="feature-check">✓</span> VoIP Systems</li>
+            </ul>
+          </div>
+
+          <div class="product-card">
+            <div class="product-icon">🔌</div>
+            <h3 class="product-title">Power & Energy</h3>
+            <p class="product-description">Power solutions, batteries, and energy storage systems for various applications.</p>
+            <ul class="product-features">
+              <li><span class="feature-check">✓</span> Power Supplies</li>
+              <li><span class="feature-check">✓</span> Battery Systems</li>
+              <li><span class="feature-check">✓</span> Solar Components</li>
+              <li><span class="feature-check">✓</span> UPS Systems</li>
+              <li><span class="feature-check">✓</span> Charging Solutions</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Industry Statistics -->
+      <section class="stats-section">
+        <div class="stats-container">
+          <h2 class="section-title" style="color: var(--text-primary);">Electronics Trade Performance</h2>
+          <p class="section-subtitle" style="color: var(--text-secondary);">Our track record in electronics trading demonstrates our expertise and commitment to excellence.</p>
+          
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">$500M+</div>
+              <div class="stat-label">Electronics Trade Volume</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">200+</div>
+              <div class="stat-label">Electronics Suppliers</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">Countries Sourced</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">99.5%</div>
+              <div class="stat-label">Quality Compliance Rate</div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">24/7</div>
+              <div class="stat-label">Technical Support</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Partner Brands -->
+      <section class="content-section brands-section">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
+          <h2 class="section-title">Partner Brands & Manufacturers</h2>
+          <p class="section-subtitle">We work with leading electronics manufacturers and brands to bring you the best products at competitive prices.</p>
+          
+          <div class="brands-grid">
+            <div class="brand-item">
+              <div class="brand-logo">🏭</div>
+              <h3 class="brand-name">Major OEM Partners</h3>
+              <p class="brand-description">Direct partnerships with original equipment manufacturers</p>
+            </div>
+
+            <div class="brand-item">
+              <div class="brand-logo">🌟</div>
+              <h3 class="brand-name">Premium Brands</h3>
+              <p class="brand-description">Authorized distribution of premium electronics brands</p>
+            </div>
+
+            <div class="brand-item">
+              <div class="brand-logo">🔧</div>
+              <h3 class="brand-name">Component Suppliers</h3>
+              <p class="brand-description">Specialized electronic component manufacturers</p>
+            </div>
+
+            <div class="brand-item">
+              <div class="brand-logo">📱</div>
+              <h3 class="brand-name">Mobile Technology</h3>
+              <p class="brand-description">Leading mobile device and accessory manufacturers</p>
+            </div>
+
+            <div class="brand-item">
+              <div class="brand-logo">💻</div>
+              <h3 class="brand-name">Computing Solutions</h3>
+              <p class="brand-description">Top computer hardware and software providers</p>
+            </div>
+
+            <div class="brand-item">
+              <div class="brand-logo">🏠</div>
+              <h3 class="brand-name">Smart Home Brands</h3>
+              <p class="brand-description">IoT and smart home technology manufacturers</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-container">
+        <h2 class="cta-title">Ready to Source Electronics?</h2>
+        <p class="cta-description">Get access to premium electronics products from verified global suppliers with competitive pricing and reliable delivery.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+          <a href="quote.html" class="btn btn-primary">Request Quote</a>
+          <a href="contact.html" class="btn btn-secondary">Contact Sales</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="history.html">Company History</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="leadership.html">Leadership</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="awards.html">Awards & Recognition</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="global-sourcing.html">Global Sourcing</a></li>
+          <li><a href="logistics.html">Logistics & Shipping</a></li>
+          <li><a href="quality-assurance.html">Quality Assurance</a></li>
+          <li><a href="trade-finance.html">Trade Finance</a></li>
+          <li><a href="consultation.html">Consultation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="textiles.html">Textiles & Apparel</a></li>
+          <li><a href="machinery.html">Machinery</a></li>
+          <li><a href="chemicals.html">Chemicals</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="market-insights.html">Market Insights</a></li>
+          <li><a href="trade-guides.html">Trade Guides</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="tools.html">Tools & Calculators</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="news.html">News & Press</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:info@worldwidetrade.com">info@worldwidetrade.com</a></li>
+          <li><a href="tel:+1-555-TRADE-01">+1 (555) TRADE-01</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="quote.html">Get Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Worldwide Trade Co. All rights reserved. | <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    document.querySelector('.mobile-menu').addEventListener('click', function() {
+      console.log('Mobile menu clicked');
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Add loading animation for cards
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.product-card, .stat-item, .brand-item').forEach(item => {
+      observer.observe(item);
+    });
+  </script>
+</body>
+</html>

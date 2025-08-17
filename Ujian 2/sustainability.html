@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sustainability - Worldwide Trade | Responsible Trade Practices & Environmental Commitment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004d99;
+      --secondary: #ff6b35;
+      --accent: #00d4aa;
+      --green: #22c55e;
+      --green-dark: #16a34a;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --border: #e2e8f0;
+      --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55528 100%);
+      --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+      --gradient-green: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(0, 102, 204, 0.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--light);
+      color: var(--primary);
+      padding-left: 2rem;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Page Content Styles */
+    .page-content {
+      padding-top: 80px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><path d="M10,50 Q50,30 90,50" stroke="%23ffffff" stroke-width="0.5" fill="none" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      justify-content: center;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Mission Statement */
+    .mission-section {
+      background: var(--light);
+      border-radius: 20px;
+      padding: 4rem;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+    .mission-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+
+    .mission-text {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Pillars Grid */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .pillar-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .pillar-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: var(--gradient-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-size: 2rem;
+    }
+
+    .pillar-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .pillar-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Impact Stats */
+    .impact-section {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0;
+      margin: 4rem 0;
+      border-radius: 20px;
+    }
+
+    .impact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .impact-stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Initiatives */
+    .initiatives-section {
+      margin: 4rem 0;
+    }
+
+    .initiatives-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .initiative-card {
+      background: white;
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: var(--shadow-md);
+      border-left: 5px solid var(--green);
+    }
+
+    .initiative-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .initiative-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: var(--gradient-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .initiative-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .initiative-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .initiative-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .highlight-item {
+      background: var(--light);
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .highlight-value {
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    /* Certifications */
+    .certifications-section {
+      background: var(--light);
+      padding: 4rem;
+      border-radius: 20px;
+      margin: 4rem 0;
+    }
+
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .certification-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .certification-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .cert-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      background: var(--gradient-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .cert-name {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .cert-issuer {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Goals Timeline */
+    .timeline-section {
+      margin: 4rem 0;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 3rem auto 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--green);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding: 0 2rem;
+    }
+
+    .timeline-item:nth-child(odd) {
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      text-align: left;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-right: calc(50% + 2rem);
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: calc(50% + 2rem);
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: 50%;
+      top: 1rem;
+      width: 20px;
+      height: 20px;
+      background: var(--green);
+      border: 4px solid white;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: var(--shadow-md);
+    }
+
+    .timeline-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .timeline-year {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .timeline-description {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* Call to Action */
+    .cta-section {
+      background: var(--gradient-green);
+      color: white;
+      padding: 4rem;
+      border-radius: 20px;
+      text-align: center;
+      margin: 4rem 0 0;
+    }
+
+    .cta-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--green);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      padding: 1rem 2rem;
+      border: 2px solid white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-white:hover,
+    .btn-outline:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--green);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .mobile-menu { display: flex; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .timeline::before { left: 2rem; }
+      .timeline-item { text-align: left !important; }
+      .timeline-item .timeline-content { margin-left: 4rem !important; margin-right: 0 !important; }
+      .timeline-marker { left: 2rem; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .pillar-card,
+    .initiative-card,
+    .certification-card,
+    .timeline-item {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Worldwide Trade</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🏢 Company ▼</a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="history.html">Company History</a>
+            <a href="team.html">Our Team</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="careers.html">Careers</a>
+            <a href="awards.html">Awards & Recognition</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🛠️ Services ▼</a>
+          <div class="dropdown-menu">
+            <a href="global-sourcing.html">Global Sourcing</a>
+            <a href="logistics.html">Logistics & Shipping</a>
+            <a href="quality-assurance.html">Quality Assurance</a>
+            <a href="trade-finance.html">Trade Finance</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📦 Products ▼</a>
+          <div class="dropdown-menu">
+            <a href="products.html">All Products</a>
+            <a href="electronics.html">Electronics</a>
+            <a href="textiles.html">Textiles & Apparel</a>
+            <a href="machinery.html">Machinery</a>
+            <a href="chemicals.html">Chemicals</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📊 Resources ▼</a>
+          <div class="dropdown-menu">
+            <a href="market-insights.html">Market Insights</a>
+            <a href="trade-guides.html">Trade Guides</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="tools.html">Tools & Calculators</a>
+          </div>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+        <li><a href="quote.html" class="cta-button">Get Quote</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-content">
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>Sustainability</span>
+        </nav>
+        <h1>Sustainability</h1>
+        <p>Building a more sustainable future through responsible trade practices, environmental stewardship, and ethical business operations.</p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Mission Statement -->
+      <section class="mission-section">
+        <h2 class="mission-title">🌱 Our Sustainability Mission</h2>
+        <p class="mission-text">
+          At Worldwide Trade, we believe that sustainable business practices are not just good for the planet—they're essential for long-term success. We're committed to transforming global trade through innovative solutions that protect our environment, support communities, and create lasting value for all stakeholders. Our comprehensive approach addresses every aspect of our operations, from supply chain optimization to carbon footprint reduction.
+        </p>
+      </section>
+
+      <!-- Sustainability Pillars -->
+      <section class="section-header">
+        <h2 class="section-title">🏗️ Our Sustainability Pillars</h2>
+        <p class="section-subtitle">Four foundational areas guide our sustainability strategy and drive measurable impact across our global operations.</p>
+      </section>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">🌍</div>
+          <h3 class="pillar-title">Environmental Protection</h3>
+          <p class="pillar-description">Reducing carbon emissions, optimizing transportation routes, and promoting eco-friendly packaging solutions across our entire supply chain network.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">🤝</div>
+          <h3 class="pillar-title">Ethical Sourcing</h3>
+          <p class="pillar-description">Ensuring fair labor practices, supporting local communities, and working exclusively with verified suppliers who share our commitment to ethical business practices.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">♻️</div>
+          <h3 class="pillar-title">Circular Economy</h3>
+          <p class="pillar-description">Promoting waste reduction, material reuse, and sustainable product lifecycles to minimize environmental impact and maximize resource efficiency.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">📊</div>
+          <h3 class="pillar-title">Transparency & Reporting</h3>
+          <p class="pillar-description">Maintaining open communication about our sustainability progress through regular reporting, third-party audits, and stakeholder engagement.</p>
+        </div>
+      </div>
+
+      <!-- Impact Statistics -->
+      <section class="impact-section">
+        <div class="impact-container">
+          <div class="section-header">
+            <h2 class="section-title" style="color: white;">🎯 Our Environmental Impact</h2>
+            <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.8);">Measurable progress toward our sustainability goals through innovative practices and strategic partnerships.</p>
+          </div>
+
+          <div class="impact-grid">
+            <div class="impact-stat">
+              <span class="stat-number">35%</span>
+              <div class="stat-label">Carbon Footprint Reduction</div>
+            </div>
+
+            <div class="impact-stat">
+              <span class="stat-number">2.5M</span>
+              <div class="stat-label">Tons CO₂ Saved Annually</div>
+            </div>
+
+            <div class="impact-stat">
+              <span class="stat-number">85%</span>
+              <div class="stat-label">Sustainable Packaging</div>
+            </div>
+
+            <div class="impact-stat">
+              <span class="stat-number">500+</span>
+              <div class="stat-label">Certified Green Partners</div>
+            </div>
+
+            <div class="impact-stat">
+              <span class="stat-number">12</span>
+              <div class="stat-label">Renewable Energy Projects</div>
+            </div>
+
+            <div class="impact-stat">
+              <span class="stat-number">Zero</span>
+              <div class="stat-label">Waste to Landfill Goal</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Initiatives -->
+      <section class="initiatives-section">
+        <div class="section-header">
+          <h2 class="section-title">🚀 Key Sustainability Initiatives</h2>
+          <p class="section-subtitle">Comprehensive programs driving real environmental and social impact across our global network.</p>
+        </div>
+
+        <div class="initiatives-grid">
+          <div class="initiative-card">
+            <div class="initiative-header">
+              <div class="initiative-icon">🚢</div>
+              <h3 class="initiative-title">Green Shipping Program</h3>
+            </div>
+            <p class="initiative-description">
+              Revolutionary approach to maritime logistics focusing on fuel-efficient vessels, optimized routing algorithms, and alternative fuel adoption. Our partnership with leading shipping companies has resulted in significant emissions reductions while maintaining delivery reliability.
+            </p>
+            <div class="initiative-highlights">
+              <div class="highlight-item">
+                <span class="highlight-value">25%</span> fuel consumption reduction
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-value">15</span> eco-friendly shipping routes
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-value">100+</span> green-certified vessels
+              </div>
+            </div>
+          </div>
+
+          <div class="initiative-card">
+            <div class="initiative-header">
+              <div class="initiative-icon">📦</div>
+              <h3 class="initiative-title">Sustainable Packaging Initiative</h3>
+            </div>
+            <p class="initiative-description">
+              Comprehensive packaging transformation program eliminating single-use plastics and introducing biodegradable, recyclable materials. Working with suppliers to redesign packaging for maximum protection with minimum environmental impact.
+            </p>
+            <div class="initiative-highlights">
+              <div class="highlight-item">
+                <span class="highlight-value">80%</span> plastic packaging eliminated
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-value">50+</span> sustainable material partners
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-value">30%</span> packaging waste reduction
+              </div>
+            </div>
+          </div>
+
+          <div class="initiative-card">
+            <div class="initiative-header">
+              <div class="initiative-icon">⚡</div>
+              <h3 class="initiative-title">Renewable Energy Transition</h3>
+            </div>
+            <p class="initiative-description">
+              Comprehensive energy transformation across all facilities, incorporating solar panels, wind power, and energy storage solutions. Our goal is to achieve 100% renewable energy usage by 2027 while reducing overall energy consumption.
+            </p>
+            <div class="initiative-highlights">
+              <div class="highlight-item">
+                <span class="highlight-value">75%</span> renewable energy usage
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-value">8</span> solar installations completed
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-value">2MW</span> total renewable capacity
+              </div>
+            </div>
+          </div>
+
+          <div class="initiative-card">
+            <div class="initiative-header">
+              <div class="initiative-icon">🌳</div>
+              <h3 class="initiative-title">Carbon Offset & Reforestation</h3>
+            </div>
+            <p class="initiative-description">
+              Strategic reforestation partnerships and verified carbon offset programs neutralizing our operational emissions. Supporting global reforestation projects while investing in cutting-edge carbon capture technologies for long-term climate impact.
+            </p>
+            <div class="initiative-highlights">
+              <div class="highlight-item">
+                <span class="highlight-value">50,000</span> trees planted annually
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-value">10+</span> reforestation projects
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-value">Carbon</span> neutral operations by 2026
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section class="certifications-section">
+        <div class="section-header">
+          <h2 class="section-title">🏅 Certifications & Recognition</h2>
+          <p class="section-subtitle">Third-party validations of our sustainability commitments and environmental management systems.</p>
+        </div>
+
+        <div class="certifications-grid">
+          <div class="certification-card">
+            <div class="cert-logo">🌐</div>
+            <h3 class="cert-name">ISO 14001:2015</h3>
+            <p class="cert-issuer">Environmental Management Systems</p>
+          </div>
+
+          <div class="certification-card">
+            <div class="cert-logo">📊</div>
+            <h3 class="cert-name">Carbon Trust Standard</h3>
+            <p class="cert-issuer">Carbon Footprint Verification</p>
+          </div>
+
+          <div class="certification-card">
+            <div class="cert-logo">🤝</div>
+            <h3 class="cert-name">Fair Trade Certified</h3>
+            <p class="cert-issuer">Ethical Sourcing Standards</p>
+          </div>
+
+          <div class="certification-card">
+            <div class="cert-logo">🌱</div>
+            <h3 class="cert-name">B Corp Certified</h3>
+            <p class="cert-issuer">Social & Environmental Performance</p>
+          </div>
+
+          <div class="certification-card">
+            <div class="cert-logo">♻️</div>
+            <h3 class="cert-name">Cradle to Cradle</h3>
+            <p class="cert-issuer">Circular Economy Design</p>
+          </div>
+
+          <div class="certification-card">
+            <div class="cert-logo">⚡</div>
+            <h3 class="cert-name">RE100 Member</h3>
+            <p class="cert-issuer">100% Renewable Energy Commitment</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sustainability Goals Timeline -->
+      <section class="timeline-section">
+        <div class="section-header">
+          <h2 class="section-title">🎯 Sustainability Roadmap</h2>
+          <p class="section-subtitle">Our ambitious timeline for achieving measurable sustainability milestones and leading industry transformation.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2025</div>
+              <h3 class="timeline-title">Plastic-Free Packaging</h3>
+              <p class="timeline-description">Complete elimination of single-use plastics from all packaging materials, transitioning to 100% biodegradable and recyclable alternatives.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2026</div>
+              <h3 class="timeline-title">Carbon Neutral Operations</h3>
+              <p class="timeline-description">Achieve net-zero carbon emissions across all operations through renewable energy, efficiency improvements, and verified offset programs.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2027</div>
+              <h3 class="timeline-title">100% Renewable Energy</h3>
+              <p class="timeline-description">Complete transition to renewable energy sources for all facilities, warehouses, and offices worldwide through solar, wind, and clean energy partnerships.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2028</div>
+              <h3 class="timeline-title">Circular Supply Chain</h3>
+              <p class="timeline-description">Implement fully circular supply chain model with zero waste to landfill and closed-loop material flows across all product categories.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2030</div>
+              <h3 class="timeline-title">Climate Positive Impact</h3>
+              <p class="timeline-description">Go beyond carbon neutral to become climate positive, removing more carbon from the atmosphere than we generate through expanded reforestation and innovation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action -->
+      <section class="cta-section">
+        <h2 class="cta-title">🤝 Partner with Us for Sustainable Trade</h2>
+        <p class="cta-subtitle">Join our mission to transform global commerce through sustainable practices. Together, we can build a more responsible and profitable future for international trade.</p>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn-white">Discuss Partnership</a>
+          <a href="#" class="btn-outline">Download Sustainability Report</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="history.html">Company History</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="leadership.html">Leadership</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="awards.html">Awards & Recognition</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="global-sourcing.html">Global Sourcing</a></li>
+          <li><a href="logistics.html">Logistics & Shipping</a></li>
+          <li><a href="quality-assurance.html">Quality Assurance</a></li>
+          <li><a href="trade-finance.html">Trade Finance</a></li>
+          <li><a href="consultation.html">Consultation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="textiles.html">Textiles & Apparel</a></li>
+          <li><a href="machinery.html">Machinery</a></li>
+          <li><a href="chemicals.html">Chemicals</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="market-insights.html">Market Insights</a></li>
+          <li><a href="trade-guides.html">Trade Guides</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="tools.html">Tools & Calculators</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="news.html">News & Press</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:info@worldwidetrade.com">info@worldwidetrade.com</a></li>
+          <li><a href="tel:+1-555-TRADE-01">+1 (555) TRADE-01</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="quote.html">Get Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Worldwide Trade Co. All rights reserved. | <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
+    </div>
+  </footer>

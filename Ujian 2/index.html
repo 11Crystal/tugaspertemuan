@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Worldwide Trade - Global Import Solutions & Supply Chain Excellence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004d99;
+      --secondary: #ff6b35;
+      --accent: #00d4aa;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --border: #e2e8f0;
+      --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55528 100%);
+      --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Modern Header */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(0, 102, 204, 0.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--light);
+      color: var(--primary);
+      padding-left: 2rem;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="%23ffffff" opacity="0.08"/><circle cx="10" cy="50" r="1" fill="%23ffffff" opacity="0.08"/><circle cx="90" cy="30" r="1" fill="%23ffffff" opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      text-align: center;
+      color: white;
+      max-width: 800px;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    .btn-primary {
+      background: var(--gradient-secondary);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-lg);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    /* Quick Links Section */
+    .quick-links {
+      background: var(--light);
+      padding: 4rem 0;
+    }
+
+    .quick-links-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .quick-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .quick-link-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quick-link-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .quick-link-card:hover::before {
+      left: 100%;
+    }
+
+    .quick-link-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .quick-link-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .quick-link-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .quick-link-description {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* Awards Section */
+    .awards {
+      background: var(--white);
+      padding: 4rem 0;
+    }
+
+    .awards-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .award-item {
+      background: var(--light);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .award-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .award-year {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .award-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .award-org {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Stats Section */
+    .stats {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0;
+    }
+
+    .stats-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Newsletter Section */
+    .newsletter {
+      background: var(--light);
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .newsletter-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 1rem;
+      border: 2px solid var(--border);
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    }
+
+    .newsletter-btn {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: flex;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+
+      .quick-links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .awards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Worldwide Trade</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🏢 Company ▼</a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="history.html">Company History</a>
+            <a href="team.html">Our Team</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="careers.html">Careers</a>
+            <a href="awards.html">Awards & Recognition</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🛠️ Services ▼</a>
+          <div class="dropdown-menu">
+            <a href="global-sourcing.html">Global Sourcing</a>
+            <a href="logistics.html">Logistics & Shipping</a>
+            <a href="quality-assurance.html">Quality Assurance</a>
+            <a href="trade-finance.html">Trade Finance</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📦 Products ▼</a>
+          <div class="dropdown-menu">
+            <a href="products.html">All Products</a>
+            <a href="electronics.html">Electronics</a>
+            <a href="textiles.html">Textiles & Apparel</a>
+            <a href="machinery.html">Machinery</a>
+            <a href="chemicals.html">Chemicals</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📊 Resources ▼</a>
+          <div class="dropdown-menu">
+            <a href="market-insights.html">Market Insights</a>
+            <a href="trade-guides.html">Trade Guides</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="tools.html">Tools & Calculators</a>
+          </div>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+        <li><a href="quote.html" class="cta-button">Get Quote</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Global Trade Made Simple</h1>
+      <p class="hero-subtitle">Your trusted partner for international sourcing, logistics, and trade solutions. Connect with verified suppliers worldwide and streamline your import process.</p>
+      <div class="hero-buttons">
+        <a href="services.html" class="btn-primary">
+          🚀 Explore Services
+        </a>
+        <a href="quote.html" class="btn-secondary">
+          💬 Get Free Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links Section -->
+  <section class="quick-links">
+    <div class="quick-links-container">
+      <h2 style="text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem; color: var(--text-primary);">Explore Our Website</h2>
+      <div class="quick-links-grid">
+        <!-- Company Pages -->
+        <a href="about.html" class="quick-link-card">
+          <div class="quick-link-icon">🏢</div>
+          <h3 class="quick-link-title">About Us</h3>
+          <p class="quick-link-description">Learn about our company, mission, and values that drive our global trade excellence.</p>
+        </a>
+
+        <a href="history.html" class="quick-link-card">
+          <div class="quick-link-icon">📚</div>
+          <h3 class="quick-link-title">Company History</h3>
+          <p class="quick-link-description">Discover our journey from startup to global trade leader over the past decade.</p>
+        </a>
+
+        <a href="team.html" class="quick-link-card">
+          <div class="quick-link-icon">👥</div>
+          <h3 class="quick-link-title">Our Team</h3>
+          <p class="quick-link-description">Meet the experts behind our success in international trade and logistics.</p>
+        </a>
+
+        <a href="leadership.html" class="quick-link-card">
+          <div class="quick-link-icon">👔</div>
+          <h3 class="quick-link-title">Leadership</h3>
+          <p class="quick-link-description">Get to know our executive team and their vision for global trade.</p>
+        </a>
+
+        <a href="careers.html" class="quick-link-card">
+          <div class="quick-link-icon">💼</div>
+          <h3 class="quick-link-title">Careers</h3>
+          <p class="quick-link-description">Join our growing team and build your career in international trade.</p>
+        </a>
+
+        <a href="awards.html" class="quick-link-card">
+          <div class="quick-link-icon">🏆</div>
+          <h3 class="quick-link-title">Awards & Recognition</h3>
+          <p class="quick-link-description">See how industry leaders recognize our excellence in global trade.</p>
+        </a>
+
+        <!-- Services Pages -->
+        <a href="services.html" class="quick-link-card">
+          <div class="quick-link-icon">🛠️</div>
+          <h3 class="quick-link-title">Our Services</h3>
+          <p class="quick-link-description">Comprehensive trade solutions from sourcing to delivery and beyond.</p>
+        </a>
+
+        <a href="global-sourcing.html" class="quick-link-card">
+          <div class="quick-link-icon">🌍</div>
+          <h3 class="quick-link-title">Global Sourcing</h3>
+          <p class="quick-link-description">Access verified suppliers worldwide with our extensive network.</p>
+        </a>
+
+        <a href="logistics.html" class="quick-link-card">
+          <div class="quick-link-icon">🚚</div>
+          <h3 class="quick-link-title">Logistics & Shipping</h3>
+          <p class="quick-link-description">End-to-end logistics solutions for seamless international delivery.</p>
+        </a>
+
+        <a href="quality-assurance.html" class="quick-link-card">
+          <div class="quick-link-icon">✅</div>
+          <h3 class="quick-link-title">Quality Assurance</h3>
+          <p class="quick-link-description">Rigorous quality control and inspection services for peace of mind.</p>
+        </a>
+
+        <a href="trade-finance.html" class="quick-link-card">
+          <div class="quick-link-icon">💰</div>
+          <h3 class="quick-link-title">Trade Finance</h3>
+          <p class="quick-link-description">Flexible financing solutions to support your international trade.</p>
+        </a>
+
+        <a href="consultation.html" class="quick-link-card">
+          <div class="quick-link-icon">🤝</div>
+          <h3 class="quick-link-title">Consultation Services</h3>
+          <p class="quick-link-description">Expert guidance for your international trade strategy and operations.</p>
+        </a>
+
+        <!-- Products Pages -->
+        <a href="products.html" class="quick-link-card">
+          <div class="quick-link-icon">📦</div>
+          <h3 class="quick-link-title">Products Catalog</h3>
+          <p class="quick-link-description">Browse our extensive catalog of products available for import.</p>
+        </a>
+
+        <a href="electronics.html" class="quick-link-card">
+          <div class="quick-link-icon">💻</div>
+          <h3 class="quick-link-title">Electronics</h3>
+          <p class="quick-link-description">Consumer electronics, components, and technology products.</p>
+        </a>
+
+        <a href="textiles.html" class="quick-link-card">
+          <div class="quick-link-icon">👕</div>
+          <h3 class="quick-link-title">Textiles & Apparel</h3>
+          <p class="quick-link-description">Fashion, textiles, and apparel from top manufacturers worldwide.</p>
+        </a>
+
+        <a href="machinery.html" class="quick-link-card">
+          <div class="quick-link-icon">⚙️</div>
+          <h3 class="quick-link-title">Machinery</h3>
+          <p class="quick-link-description">Industrial machinery and equipment for various industries.</p>
+        </a>
+
+        <a href="chemicals.html" class="quick-link-card">
+          <div class="quick-link-icon">🧪</div>
+          <h3 class="quick-link-title">Chemicals</h3>
+          <p class="quick-link-description">Industrial chemicals and raw materials for manufacturing.</p>
+        </a>
+
+        <!-- Resources Pages -->
+        <a href="market-insights.html" class="quick-link-card">
+          <div class="quick-link-icon">📊</div>
+          <h3 class="quick-link-title">Market Insights</h3>
+          <p class="quick-link-description">Latest market trends and analysis for informed decision making.</p>
+        </a>
+
+        <a href="trade-guides.html" class="quick-link-card">
+          <div class="quick-link-icon">📖</div>
+          <h3 class="quick-link-title">Trade Guides</h3>
+          <p class="quick-link-description">Comprehensive guides for international trade and import procedures.</p>
+        </a>
+
+        <a href="case-studies.html" class="quick-link-card">
+          <div class="quick-link-icon">📋</div>
+          <h3 class="quick-link-title">Case Studies</h3>
+          <p class="quick-link-description">Real success stories from our clients and their trade achievements.</p>
+        </a>
+
+        <a href="blog.html" class="quick-link-card">
+          <div class="quick-link-icon">✍️</div>
+          <h3 class="quick-link-title">Blog</h3>
+          <p class="quick-link-description">Latest news, insights, and updates from the world of global trade.</p>
+        </a>
+
+        <a href="tools.html" class="quick-link-card">
+          <div class="quick-link-icon">🛠️</div>
+          <h3 class="quick-link-title">Tools & Calculators</h3>
+          <p class="quick-link-description">Useful tools and calculators for trade planning and cost estimation.</p>
+        </a>
+
+        <!-- Additional Pages -->
+        <a href="faq.html" class="quick-link-card">
+          <div class="quick-link-icon">❓</div>
+          <h3 class="quick-link-title">FAQ</h3>
+          <p class="quick-link-description">Frequently asked questions about our services and processes.</p>
+        </a>
+
+        <a href="testimonials.html" class="quick-link-card">
+          <div class="quick-link-icon">💬</div>
+          <h3 class="quick-link-title">Client Testimonials</h3>
+          <p class="quick-link-description">Hear what our clients say about their experience with us.</p>
+        </a>
+
+        <a href="partnerships.html" class="quick-link-card">
+          <div class="quick-link-icon">🤝</div>
+          <h3 class="quick-link-title">Partnerships</h3>
+          <p class="quick-link-description">Learn about our strategic partnerships and alliance program.</p>
+        </a>
+
+        <a href="news.html" class="quick-link-card">
+          <div class="quick-link-icon">📰</div>
+          <h3 class="quick-link-title">News & Press</h3>
+          <p class="quick-link-description">Latest company news, press releases, and media coverage.</p>
+        </a>
+
+        <a href="events.html" class="quick-link-card">
+          <div class="quick-link-icon">🎪</div>
+          <h3 class="quick-link-title">Events & Webinars</h3>
+          <p class="quick-link-description">Upcoming trade shows, webinars, and industry events.</p>
+        </a>
+
+        <a href="sustainability.html" class="quick-link-card">
+          <div class="quick-link-icon">🌱</div>
+          <h3 class="quick-link-title">Sustainability</h3>
+          <p class="quick-link-description">Our commitment to sustainable and responsible trade practices.</p>
+        </a>
+
+        <a href="contact.html" class="quick-link-card">
+          <div class="quick-link-icon">📞</div>
+          <h3 class="quick-link-title">Contact Us</h3>
+          <p class="quick-link-description">Get in touch with our team for personalized assistance.</p>
+        </a>
+
+        <a href="quote.html" class="quick-link-card">
+          <div class="quick-link-icon">💼</div>
+          <h3 class="quick-link-title">Get a Quote</h3>
+          <p class="quick-link-description">Request a customized quote for your import requirements.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards & Recognition Section -->
+  <section class="awards">
+    <div class="awards-container">
+      <h2 style="text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Awards & Recognition</h2>
+      <p style="text-align: center; font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Industry recognition for our commitment to excellence in global trade and customer service.</p>
+      
+      <div class="awards-grid">
+        <div class="award-item">
+          <div class="award-year">2024</div>
+          <h3 class="award-title">Global Trade Excellence Award</h3>
+          <p class="award-org">International Trade Association</p>
+        </div>
+
+        <div class="award-item">
+          <div class="award-year">2023</div>
+          <h3 class="award-title">Best Logistics Partner</h3>
+          <p class="award-org">Asia-Pacific Trade Council</p>
+        </div>
+
+        <div class="award-item">
+          <div class="award-year">2023</div>
+          <h3 class="award-title">Innovation in Trade Technology</h3>
+          <p class="award-org">World Trade Forum</p>
+        </div>
+
+        <div class="award-item">
+          <div class="award-year">2022</div>
+          <h3 class="award-title">Sustainable Trade Leader</h3>
+          <p class="award-org">Green Trade Initiative</p>
+        </div>
+
+        <div class="award-item">
+          <div class="award-year">2022</div>
+          <h3 class="award-title">Customer Service Excellence</h3>
+          <p class="award-org">Global Business Awards</p>
+        </div>
+
+        <div class="award-item">
+          <div class="award-year">2021</div>
+          <h3 class="award-title">Emerging Trade Company</h3>
+          <p class="award-org">International Commerce Chamber</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="stats">
+    <div class="stats-container">
+      <h2 style="text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: white;">Our Impact in Numbers</h2>
+      <p style="text-align: center; font-size: 1.1rem; color: rgba(255, 255, 255, 0.8); max-width: 600px; margin: 0 auto;">Delivering measurable results for businesses worldwide through our comprehensive trade solutions.</p>
+      
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Global Partners</div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-number">50</div>
+          <div class="stat-label">Countries Served</div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-number">$2B+</div>
+          <div class="stat-label">Trade Volume</div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-number">10K+</div>
+          <div class="stat-label">Shipments Delivered</div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Customer Support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter">
+    <div class="newsletter-container">
+      <h2 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Stay Updated</h2>
+      <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">Get the latest trade insights, market updates, and exclusive offers delivered to your inbox.</p>
+      
+      <form class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
+      
+      <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 1rem;">No spam. Unsubscribe at any time.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="history.html">Company History</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="leadership.html">Leadership</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="awards.html">Awards & Recognition</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="global-sourcing.html">Global Sourcing</a></li>
+          <li><a href="logistics.html">Logistics & Shipping</a></li>
+          <li><a href="quality-assurance.html">Quality Assurance</a></li>
+          <li><a href="trade-finance.html">Trade Finance</a></li>
+          <li><a href="consultation.html">Consultation</a></li>
+        </ul>
+      </div>
+
+      
+      <div class="footer-section">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="textiles.html">Textiles & Apparel</a></li>
+          <li><a href="machinery.html">Machinery</a></li>
+          <li><a href="chemicals.html">Chemicals</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="market-insights.html">Market Insights</a></li>
+          <li><a href="trade-guides.html">Trade Guides</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="tools.html">Tools & Calculators</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="news.html">News & Press</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:info@worldwidetrade.com">info@worldwidetrade.com</a></li>
+          <li><a href="tel:+1-555-TRADE-01">+1 (555) TRADE-01</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="quote.html">Get Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Worldwide Trade Co. All rights reserved. | <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Newsletter form handling
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input').value;
+      if (email) {
+        alert('Thank you for subscribing! You will receive trade updates and insights.');
+        this.querySelector('input').value = '';
+      }
+    });
+
+    // Mobile menu toggle (for future implementation)
+    document.querySelector('.mobile-menu').addEventListener('click', function() {
+      // Add mobile menu functionality here
+      console.log('Mobile menu clicked');
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Add loading animation for quick link cards
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all quick link cards
+    document.querySelectorAll('.quick-link-card, .award-item, .stat-item').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>

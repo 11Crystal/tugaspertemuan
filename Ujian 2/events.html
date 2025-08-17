@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events & Webinars - Worldwide Trade | Trade Shows, Conferences & Educational Content</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004d99;
+      --secondary: #ff6b35;
+      --accent: #00d4aa;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --border: #e2e8f0;
+      --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55528 100%);
+      --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(0, 102, 204, 0.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--light);
+      color: var(--primary);
+      padding-left: 2rem;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Page Content Styles */
+    .page-content {
+      padding-top: 80px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      justify-content: center;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Event Filters */
+    .event-filters {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--border);
+      background: white;
+      color: var(--text-primary);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Upcoming Events */
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .event-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .event-status {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .status-upcoming {
+      background: var(--accent);
+      color: white;
+    }
+
+    .status-live {
+      background: var(--secondary);
+      color: white;
+      animation: pulse 2s infinite;
+    }
+
+    .status-past {
+      background: var(--text-secondary);
+      color: white;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    .event-image {
+      height: 200px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+      position: relative;
+    }
+
+    .event-content {
+      padding: 2rem;
+    }
+
+    .event-date {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .event-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .event-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .event-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .event-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .event-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--primary);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Webinar Section */
+    .webinar-section {
+      background: var(--light);
+      padding: 4rem 0;
+      margin: 4rem 0;
+      border-radius: 20px;
+    }
+
+    .webinar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .webinar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .webinar-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .webinar-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .webinar-type {
+      background: var(--secondary);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .webinar-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .webinar-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .webinar-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    /* Newsletter Section */
+    .newsletter-section {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+      margin: 4rem 0 0;
+    }
+
+    .newsletter-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .newsletter-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 1rem;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .newsletter-input:focus {
+      border-color: var(--accent);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .newsletter-btn {
+      background: var(--gradient-accent);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .mobile-menu { display: flex; }
+      .events-grid { grid-template-columns: 1fr; }
+      .event-filters { justify-content: flex-start; }
+      .webinar-grid { grid-template-columns: 1fr; }
+      .newsletter-form { flex-direction: column; }
+      .event-actions { flex-direction: column; }
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .event-card,
+    .webinar-card {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Worldwide Trade</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🏢 Company ▼</a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="history.html">Company History</a>
+            <a href="team.html">Our Team</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="careers.html">Careers</a>
+            <a href="awards.html">Awards & Recognition</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🛠️ Services ▼</a>
+          <div class="dropdown-menu">
+            <a href="global-sourcing.html">Global Sourcing</a>
+            <a href="logistics.html">Logistics & Shipping</a>
+            <a href="quality-assurance.html">Quality Assurance</a>
+            <a href="trade-finance.html">Trade Finance</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📦 Products ▼</a>
+          <div class="dropdown-menu">
+            <a href="products.html">All Products</a>
+            <a href="electronics.html">Electronics</a>
+            <a href="textiles.html">Textiles & Apparel</a>
+            <a href="machinery.html">Machinery</a>
+            <a href="chemicals.html">Chemicals</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📊 Resources ▼</a>
+          <div class="dropdown-menu">
+            <a href="market-insights.html">Market Insights</a>
+            <a href="trade-guides.html">Trade Guides</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="tools.html">Tools & Calculators</a>
+          </div>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+        <li><a href="quote.html" class="cta-button">Get Quote</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-content">
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>Events & Webinars</span>
+        </nav>
+        <h1>Events & Webinars</h1>
+        <p>Join us at industry conferences, trade shows, and exclusive webinars. Connect with global trade experts and expand your network.</p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Event Filters -->
+      <div class="event-filters">
+        <a href="#" class="filter-btn active" data-filter="all">All Events</a>
+        <a href="#" class="filter-btn" data-filter="upcoming">Upcoming</a>
+        <a href="#" class="filter-btn" data-filter="webinar">Webinars</a>
+        <a href="#" class="filter-btn" data-filter="conference">Conferences</a>
+        <a href="#" class="filter-btn" data-filter="tradeshow">Trade Shows</a>
+        <a href="#" class="filter-btn" data-filter="past">Past Events</a>
+      </div>
+
+      <!-- Upcoming Events -->
+      <section class="section-header">
+        <h2 class="section-title">🎯 Upcoming Events</h2>
+        <p class="section-subtitle">Don't miss these exciting opportunities to connect, learn, and grow your international trade knowledge.</p>
+      </section>
+
+      <div class="events-grid">
+        <div class="event-card" data-category="webinar">
+          <div class="event-status status-upcoming">Live Soon</div>
+          <div class="event-image">🌐</div>
+          <div class="event-content">
+            <div class="event-date">📅 March 25, 2025 • 2:00 PM EST</div>
+            <h3 class="event-title">Digital Transformation in Global Supply Chains</h3>
+            <div class="event-details">
+              <div class="event-detail">📍 Online Webinar</div>
+              <div class="event-detail">⏱️ 60 minutes + Q&A</div>
+              <div class="event-detail">👥 Max 500 participants</div>
+            </div>
+            <p class="event-description">Explore how AI, blockchain, and IoT technologies are revolutionizing international trade. Learn practical strategies for implementing digital solutions in your supply chain.</p>
+            <div class="event-actions">
+              <a href="#" class="btn-primary">Register Free</a>
+              <a href="#" class="btn-secondary">Add to Calendar</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="conference">
+          <div class="event-status status-upcoming">Registration Open</div>
+          <div class="event-image">🏢</div>
+          <div class="event-content">
+            <div class="event-date">📅 April 15-17, 2025</div>
+            <h3 class="event-title">Global Trade Summit 2025</h3>
+            <div class="event-details">
+              <div class="event-detail">📍 Singapore Convention Centre</div>
+              <div class="event-detail">⏱️ 3 Days</div>
+              <div class="event-detail">👥 2000+ attendees expected</div>
+            </div>
+            <p class="event-description">The premier global trade conference bringing together industry leaders, government officials, and innovators to discuss the future of international commerce.</p>
+            <div class="event-actions">
+              <a href="#" class="btn-primary">Register Now</a>
+              <a href="#" class="btn-secondary">View Agenda</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="tradeshow">
+          <div class="event-status status-upcoming">Early Bird</div>
+          <div class="event-image">🛍️</div>
+          <div class="event-content">
+            <div class="event-date">📅 May 8-10, 2025</div>
+            <h3 class="event-title">Asia Import Expo 2025</h3>
+            <div class="event-details">
+              <div class="event-detail">📍 Hong Kong Convention Center</div>
+              <div class="event-detail">⏱️ 3 Days</div>
+              <div class="event-detail">👥 500+ exhibitors</div>
+            </div>
+            <p class="event-description">Meet verified suppliers, discover new products, and build valuable partnerships at Asia's largest import trade show. Visit us at Booth #A127.</p>
+            <div class="event-actions">
+              <a href="#" class="btn-primary">Get Tickets</a>
+              <a href="#" class="btn-secondary">Book Meeting</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="webinar">
+          <div class="event-status status-upcoming">Coming Soon</div>
+          <div class="event-image">⚖️</div>
+          <div class="event-content">
+            <div class="event-date">📅 April 2, 2025 • 10:00 AM EST</div>
+            <h3 class="event-title">Trade Compliance in 2025: New Regulations & Best Practices</h3>
+            <div class="event-details">
+              <div class="event-detail">📍 Online Webinar</div>
+              <div class="event-detail">⏱️ 90 minutes</div>
+              <div class="event-detail">👥 Expert panel discussion</div>
+            </div>
+            <p class="event-description">Stay ahead of changing trade regulations. Our compliance experts discuss new requirements, documentation changes, and strategies for seamless international trade.</p>
+            <div class="event-actions">
+              <a href="#" class="btn-primary">Register Now</a>
+              <a href="#" class="btn-secondary">Notify Me</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="conference">
+          <div class="event-status status-upcoming">VIP Access</div>
+          <div class="event-image">💼</div>
+          <div class="event-content">
+            <div class="event-date">📅 June 12-13, 2025</div>
+            <h3 class="event-title">Sustainable Trade Forum</h3>
+            <div class="event-details">
+              <div class="event-detail">📍 Amsterdam RAI Convention Centre</div>
+              <div class="event-detail">⏱️ 2 Days</div>
+              <div class="event-detail">👥 Invitation only</div>
+            </div>
+            <p class="event-description">An exclusive gathering focusing on sustainable practices in global trade, featuring C-level executives and sustainability leaders from major corporations.</p>
+            <div class="event-actions">
+              <a href="#" class="btn-primary">Request Invitation</a>
+              <a href="#" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="past">
+          <div class="event-status status-past">Completed</div>
+          <div class="event-image">📊</div>
+          <div class="event-content">
+            <div class="event-date">📅 February 20, 2025</div>
+            <h3 class="event-title">Q1 Market Outlook: Trade Trends & Opportunities</h3>
+            <div class="event-details">
+              <div class="event-detail">📍 Online Webinar</div>
+              <div class="event-detail">⏱️ 45 minutes</div>
+              <div class="event-detail">👥 850+ attendees</div>
+            </div>
+            <p class="event-description">Our quarterly market analysis covering emerging trends, regional opportunities, and economic factors affecting global trade in 2025.</p>
+            <div class="event-actions">
+              <a href="#" class="btn-secondary">Watch Recording</a>
+              <a href="#" class="btn-secondary">Download Slides</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Webinar Series Section -->
+      <section class="webinar-section">
+        <div class="webinar-container">
+          <div class="section-header">
+            <h2 class="section-title">🎓 Educational Webinar Series</h2>
+            <p class="section-subtitle">Free educational content designed to help you master international trade. Join thousands of professionals learning from industry experts.</p>
+          </div>
+
+          <div class="webinar-grid">
+            <div class="webinar-card">
+              <span class="webinar-type">Beginner Series</span>
+              <h3 class="webinar-title">Import/Export Fundamentals</h3>
+              <div class="webinar-meta">
+                <div>📅 Every 2nd Wednesday</div>
+                <div>⏱️ 30-minute sessions</div>
+                <div>👨‍🏫 Instructor: Sarah Chen, Trade Specialist</div>
+              </div>
+              <p class="webinar-description">Perfect for newcomers to international trade. Cover basics of documentation, shipping terms, customs procedures, and risk management.</p>
+              <a href="#" class="btn-primary">Join Series</a>
+            </div>
+
+            <div class="webinar-card">
+              <span class="webinar-type">Advanced Series</span>
+              <h3 class="webinar-title">Supply Chain Optimization</h3>
+              <div class="webinar-meta">
+                <div>📅 Monthly - Last Friday</div>
+                <div>⏱️ 60-minute deep dives</div>
+                <div>👨‍🏫 Instructor: Michael Rodriguez, Supply Chain Expert</div>
+              </div>
+              <p class="webinar-description">Advanced strategies for optimizing global supply chains, reducing costs, and improving efficiency through technology and best practices.</p>
+              <a href="#" class="btn-primary">Register</a>
+            </div>
+
+            <div class="webinar-card">
+              <span class="webinar-type">Expert Series</span>
+              <h3 class="webinar-title">Market Intelligence & Analysis</h3>
+              <div class="webinar-meta">
+                <div>📅 Quarterly sessions</div>
+                <div>⏱️ 90-minute workshops</div>
+                <div>👨‍🏫 Various industry experts</div>
+              </div>
+              <p class="webinar-description">In-depth market analysis, economic forecasts, and strategic insights for experienced traders looking to expand their global presence.</p>
+              <a href="#" class="btn-primary">Join Waitlist</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Past Events Archive -->
+      <section class="section-header">
+        <h2 class="section-title">📚 Event Archive</h2>
+        <p class="section-subtitle">Missed an event? Access recordings, presentations, and resources from our past events and webinars.</p>
+      </section>
+
+      <div class="events-grid">
+        <div class="event-card" data-category="past">
+          <div class="event-status status-past">Recording Available</div>
+          <div class="event-image">🚛</div>
+          <div class="event-content">
+            <div class="event-date">📅 January 28, 2025</div>
+            <h3 class="event-title">Logistics Innovations in Post-Pandemic Era</h3>
+            <div class="event-details">
+              <div class="event-detail">📍 Online Webinar</div>
+              <div class="event-detail">⏱️ 75 minutes</div>
+              <div class="event-detail">👥 1,200+ attended</div>
+            </div>
+            <p class="event-description">Exploring how the logistics industry has adapted and innovated since 2020, featuring case studies and future predictions from industry leaders.</p>
+            <div class="event-actions">
+              <a href="#" class="btn-secondary">Watch Now</a>
+              <a href="#" class="btn-secondary">Get Resources</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="past">
+          <div class="event-status status-past">Full Recording</div>
+          <div class="event-image">🔐</div>
+          <div class="event-content">
+            <div class="event-date">📅 December 15, 2024</div>
+            <h3 class="event-title">Cybersecurity in Global Trade</h3>
+            <div class="event-details">
+              <div class="event-detail">📍 Online Workshop</div>
+              <div class="event-detail">⏱️ 2 hours</div>
+              <div class="event-detail">👥 500+ participants</div>
+            </div>
+            <p class="event-description">Comprehensive workshop on protecting your business from cyber threats in international trade, including practical security measures and compliance requirements.</p>
+            <div class="event-actions">
+              <a href="#" class="btn-secondary">Access Content</a>
+              <a href="#" class="btn-secondary">Download Guide</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <div class="newsletter-container">
+        <h2 class="newsletter-title">🔔 Stay Informed</h2>
+        <p class="newsletter-subtitle">Get notified about upcoming events, exclusive webinars, and early-bird registration opportunities.</p>
+        
+        <form class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+        
+        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 1rem;">Join 15,000+ trade professionals. No spam, unsubscribe anytime.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="history.html">Company History</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="leadership.html">Leadership</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="awards.html">Awards & Recognition</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="global-sourcing.html">Global Sourcing</a></li>
+          <li><a href="logistics.html">Logistics & Shipping</a></li>
+          <li><a href="quality-assurance.html">Quality Assurance</a></li>
+          <li><a href="trade-finance.html">Trade Finance</a></li>
+          <li><a href="consultation.html">Consultation</a></li>
+        </ul>
+      </div>
+
+      
+      <div class="footer-section">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="textiles.html">Textiles & Apparel</a></li>
+          <li><a href="machinery.html">Machinery</a></li>
+          <li><a href="chemicals.html">Chemicals</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="market-insights.html">Market Insights</a></li>
+          <li><a href="trade-guides.html">Trade Guides</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="tools.html">Tools & Calculators</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="news.html">News & Press</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:info@worldwidetrade.com">info@worldwidetrade.com</a></li>
+          <li><a href="tel:+1-555-TRADE-01">+1 (555) TRADE-01</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="quote.html">Get Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Worldwide Trade Co. All rights reserved. | <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Event filtering
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Update active filter
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        const eventCards = document.querySelectorAll('.event-card');
+        
+        eventCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.6s ease-out forwards';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Newsletter form handling
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input').value;
+      if (email) {
+        alert('Thank you for subscribing! You\'ll receive event notifications and exclusive invitations.');
+        this.querySelector('input').value = '';
+      }
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    // Observe cards
+    document.querySelectorAll('.event-card, .webinar-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>

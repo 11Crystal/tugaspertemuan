@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ - Frequently Asked Questions | Worldwide Trade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004d99;
+      --secondary: #ff6b35;
+      --accent: #00d4aa;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --border: #e2e8f0;
+      --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55528 100%);
+      --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(0, 102, 204, 0.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--light);
+      color: var(--primary);
+      padding-left: 2rem;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Page Content */
+    .page-content {
+      padding-top: 80px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .page-header-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Search Section */
+    .faq-search {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 1.25rem 3rem 1.25rem 1.5rem;
+      border: 2px solid var(--border);
+      border-radius: 50px;
+      font-size: 1.1rem;
+      outline: none;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+    }
+
+    /* Category Filters */
+    .category-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 3rem 0;
+    }
+
+    .category-filter {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--border);
+      border-radius: 50px;
+      background: white;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .category-filter:hover,
+    .category-filter.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* FAQ Content */
+    .faq-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .faq-category {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+    }
+
+    .category-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .faq-question {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 1rem 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .faq-question:hover {
+      color: var(--primary);
+    }
+
+    .faq-toggle {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question.active .faq-toggle {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .faq-answer.active {
+      max-height: 500px;
+      padding-bottom: 1rem;
+    }
+
+    /* Help Section */
+    .help-section {
+      background: var(--light);
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .help-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .help-subtitle {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .help-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .help-btn {
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .help-btn-primary {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .help-btn-secondary {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .help-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .mobile-menu { display: flex; }
+      
+      .category-filters {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .help-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .help-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-on-scroll {
+      animation: fadeInUp 0.8s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Worldwide Trade</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🏢 Company ▼</a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="history.html">Company History</a>
+            <a href="team.html">Our Team</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="careers.html">Careers</a>
+            <a href="awards.html">Awards & Recognition</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="services.html" class="nav-link">🛠️ Services ▼</a>
+          <div class="dropdown-menu">
+            <a href="global-sourcing.html">Global Sourcing</a>
+            <a href="logistics.html">Logistics & Shipping</a>
+            <a href="quality-assurance.html">Quality Assurance</a>
+            <a href="trade-finance.html">Trade Finance</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📦 Products ▼</a>
+          <div class="dropdown-menu">
+            <a href="products.html">All Products</a>
+            <a href="electronics.html">Electronics</a>
+            <a href="textiles.html">Textiles & Apparel</a>
+            <a href="machinery.html">Machinery</a>
+            <a href="chemicals.html">Chemicals</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📊 Resources ▼</a>
+          <div class="dropdown-menu">
+            <a href="market-insights.html">Market Insights</a>
+            <a href="trade-guides.html">Trade Guides</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="tools.html">Tools & Calculators</a>
+          </div>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+        <li><a href="quote.html" class="cta-button">Get Quote</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Content -->
+  <main class="page-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-content">
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>→</span>
+          <span>FAQ</span>
+        </nav>
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions about our services, processes, and international trade solutions.</p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content animate-on-scroll">
+      <!-- Search Section -->
+      <section class="faq-search">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search for answers..." id="searchInput">
+          <span class="search-icon">🔍</span>
+        </div>
+      </section>
+
+      <!-- Category Filters -->
+      <div class="category-filters">
+        <button class="category-filter active" data-category="all">All Questions</button>
+        <button class="category-filter" data-category="services">Services</button>
+        <button class="category-filter" data-category="pricing">Pricing</button>
+        <button class="category-filter" data-category="shipping">Shipping</button>
+        <button class="category-filter" data-category="quality">Quality</button>
+        <button class="category-filter" data-category="account">Account</button>
+      </div>
+
+      <!-- FAQ Content -->
+      <div class="faq-content">
+        <!-- Services FAQ -->
+        <div class="faq-category" data-category="services">
+          <h2 class="category-title">🛠️ Services & Process</h2>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              What services does Worldwide Trade offer?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              We provide comprehensive international trade services including global sourcing, logistics and shipping, quality assurance, trade finance, consultation services, and customs clearance. Our end-to-end solutions cover every aspect of your import needs from supplier identification to final delivery.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How does your sourcing process work?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Our sourcing process begins with understanding your requirements, followed by identifying and vetting suitable suppliers from our global network. We conduct due diligence, negotiate terms, arrange samples, and facilitate communication throughout the entire sourcing journey.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you handle customs clearance and documentation?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Yes, we provide complete customs clearance services and handle all import documentation including commercial invoices, packing lists, bills of lading, certificates of origin, and any required permits or licenses. Our experienced team ensures compliance with all regulations.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can you help with product customization and private labeling?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Absolutely! We work with manufacturers who can customize products according to your specifications, including private labeling, custom packaging, color variations, and feature modifications. We'll coordinate the entire customization process for you.
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing FAQ -->
+        <div class="faq-category" data-category="pricing">
+          <h2 class="category-title">💰 Pricing & Payment</h2>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              How do you charge for your services?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Our pricing structure is transparent and competitive. We typically charge a service fee based on the order value, plus actual costs for logistics, quality inspection, and any additional services. No hidden fees - everything is clearly outlined in your quote.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do I need to pay upfront for services?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Payment terms vary depending on the service and order size. For new clients, we typically require a deposit to begin work, with the balance due at agreed milestones. We accept various payment methods including wire transfer, letters of credit, and trade financing options.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Are there any minimum order requirements?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Minimum order requirements depend on the product type and supplier. While we work with orders of various sizes, some manufacturers have minimum quantities. We'll help you find suppliers that match your volume requirements and budget.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can you provide trade financing options?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Yes, we offer various trade financing solutions including letters of credit, trade credit insurance, and flexible payment terms. Our finance team can help structure deals that work within your cash flow requirements.
+            </div>
+          </div>
+        </div>
+
+        <!-- Shipping FAQ -->
+        <div class="faq-category" data-category="shipping">
+          <h2 class="category-title">🚚 Shipping & Logistics</h2>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              What shipping methods do you offer?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              We offer multiple shipping options including sea freight (FCL and LCL), air freight, express courier, and multimodal transportation. We'll recommend the most cost-effective and time-efficient method based on your cargo type, urgency, and budget.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How long does shipping typically take?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Shipping times vary by origin, destination, and method. Sea freight typically takes 15-45 days, air freight 3-7 days, and express courier 1-3 days. We provide detailed transit time estimates for each specific route and shipping option.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you provide cargo insurance?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Yes, we offer comprehensive cargo insurance to protect your goods during transit. Insurance coverage includes protection against damage, loss, theft, and other risks. We recommend appropriate coverage levels based on your cargo value and risk profile.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I track my shipment during transit?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Absolutely! We provide real-time tracking information and regular updates throughout the shipping process. You'll receive tracking numbers and access to our online portal where you can monitor your shipment's progress from departure to delivery.
+            </div>
+          </div>
+        </div>
+
+        <!-- Quality FAQ -->
+        <div class="faq-category" data-category="quality">
+          <h2 class="category-title">✅ Quality Assurance</h2>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              How do you ensure product quality?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              We implement a comprehensive quality assurance program including supplier audits, pre-production samples, in-line inspections, and final quality control checks. Our QA team conducts thorough inspections based on your specifications and international standards.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you provide inspection reports?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Yes, we provide detailed inspection reports with photos, measurements, and test results. Reports cover appearance, functionality, packaging, labeling, and compliance with your specifications. You'll receive these reports before shipment for approval.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What happens if products don't meet quality standards?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              If products don't meet agreed specifications, we work with suppliers to resolve issues through rework, replacement, or negotiated solutions. Our quality guarantee ensures you receive products that meet your requirements or we'll make it right.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can you arrange third-party testing and certifications?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Yes, we coordinate third-party testing and certifications through accredited laboratories. This includes safety testing, compliance certifications, material analysis, and any industry-specific testing required for your market.
+            </div>
+          </div>
+        </div>
+
+        <!-- Account FAQ -->
+        <div class="faq-category" data-category="account">
+          <h2 class="category-title">👤 Account & Support</h2>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I get started with Worldwide Trade?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Getting started is easy! Simply request a quote through our website or contact our team directly. We'll schedule a consultation to understand your needs and provide a customized solution. No upfront commitments required for initial discussions.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What information do you need to provide a quote?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              To provide an accurate quote, we need product specifications, quantity requirements, target pricing, delivery destination, timeline, and any special requirements. The more details you provide, the more accurate and comprehensive our quote will be.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you work with small businesses and startups?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Yes! We work with businesses of all sizes, from startups to large corporations. Our scalable services and flexible approach make international trade accessible for small businesses looking to source products globally or expand their supply chain.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What kind of support do you provide after delivery?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Our support continues beyond delivery. We provide ongoing account management, help with any delivery issues, assist with warranty claims, facilitate reorders, and offer market insights for future sourcing decisions. We're your long-term partner in international trade.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How can I contact your support team?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Our support team is available 24/7 through multiple channels: phone (+1-555-TRADE-01), email (support@worldwidetrade.com), live chat on our website, or through your dedicated account manager. We typically respond within 2 hours during business hours.
+            </div>
+          </div>
+        </div>
+
+        <!-- General FAQ -->
+        <div class="faq-category" data-category="general">
+          <h2 class="category-title">❓ General Questions</h2>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              Which countries do you source from?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              We source from over 50 countries worldwide, with strong networks in China, India, Vietnam, Thailand, South Korea, Taiwan, Turkey, and various European countries. Our global reach allows us to find the best suppliers regardless of location.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What industries do you serve?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              We serve diverse industries including electronics, textiles and apparel, machinery, chemicals, automotive, medical devices, consumer goods, and more. Our experienced team has expertise across multiple sectors and can adapt to specific industry requirements.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How do you verify and vet suppliers?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Our rigorous vetting process includes business license verification, facility inspections, quality system audits, financial stability checks, reference validation, and ongoing performance monitoring. We only work with suppliers who meet our strict standards.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you handle regulatory compliance and certifications?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Yes, we assist with regulatory compliance including FDA registrations, CE marking, FCC certifications, and other market-specific requirements. Our compliance team stays updated on regulations and helps ensure your products meet all necessary standards.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What makes Worldwide Trade different from other importers?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Our comprehensive approach combines deep industry expertise, advanced technology, rigorous quality control, transparent pricing, and personalized service. We're not just a service provider – we're your strategic partner in international trade success.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can you help with market research and product development?
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              Absolutely! We offer market research services, trend analysis, competitor insights, and product development support. Our global network and market intelligence help you make informed decisions about product selection and market entry strategies.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Help Section -->
+      <section class="help-section">
+        <h2 class="help-title">Still Have Questions?</h2>
+        <p class="help-subtitle">Can't find what you're looking for? Our team is here to help with personalized assistance.</p>
+        
+        <div class="help-buttons">
+          <a href="contact.html" class="help-btn help-btn-primary">
+            📞 Contact Support
+          </a>
+          
+          <a href="quote.html" class="help-btn help-btn-secondary">
+            💬 Get Free Quote
+          </a>
+          
+          <a href="#" class="help-btn help-btn-secondary">
+            🔗 Schedule Consultation
+          </a>
+        </div>
+        
+        <div style="margin-top: 2rem; color: var(--text-secondary);">
+          <p><strong>Quick Response Times:</strong></p>
+          <p>📧 Email: Within 2 hours | 📞 Phone: Immediate | 💬 Live Chat: Within minutes</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="history.html">Company History</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="leadership.html">Leadership</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="awards.html">Awards & Recognition</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="global-sourcing.html">Global Sourcing</a></li>
+          <li><a href="logistics.html">Logistics & Shipping</a></li>
+          <li><a href="quality-assurance.html">Quality Assurance</a></li>
+          <li><a href="trade-finance.html">Trade Finance</a></li>
+          <li><a href="consultation.html">Consultation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="textiles.html">Textiles & Apparel</a></li>
+          <li><a href="machinery.html">Machinery</a></li>
+          <li><a href="chemicals.html">Chemicals</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="market-insights.html">Market Insights</a></li>
+          <li><a href="trade-guides.html">Trade Guides</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="tools.html">Tools & Calculators</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="news.html">News & Press</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:info@worldwidetrade.com">info@worldwidetrade.com</a></li>
+          <li><a href="tel:+1-555-TRADE-01">+1 (555) TRADE-01</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="quote.html">Get Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Worldwide Trade Co. All rights reserved. | <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // FAQ Toggle Functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const isActive = this.classList.contains('active');
+        
+        // Close all other open FAQs
+        document.querySelectorAll('.faq-question.active').forEach(activeQuestion => {
+          if (activeQuestion !== this) {
+            activeQuestion.classList.remove('active');
+            activeQuestion.nextElementSibling.classList.remove('active');
+          }
+        });
+        
+        // Toggle current FAQ
+        if (isActive) {
+          this.classList.remove('active');
+          answer.classList.remove('active');
+        } else {
+          this.classList.add('active');
+          answer.classList.add('active');
+        }
+      });
+    });
+
+    // Category Filter Functionality
+    document.querySelectorAll('.category-filter').forEach(filter => {
+      filter.addEventListener('click', function() {
+        const category = this.getAttribute('data-category');
+        
+        // Update active filter
+        document.querySelectorAll('.category-filter').forEach(f => f.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Show/hide categories
+        document.querySelectorAll('.faq-category').forEach(categoryDiv => {
+          if (category === 'all' || categoryDiv.getAttribute('data-category') === category) {
+            categoryDiv.style.display = 'block';
+          } else {
+            categoryDiv.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Search Functionality
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const question = item.querySelector('.faq-question').textContent.toLowerCase();
+        const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+        
+        if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+          item.style.display = 'block';
+          // Highlight search term if needed
+        } else {
+          item.style.display = searchTerm === '' ? 'block' : 'none';
+        }
+      });
+      
+      // Show all categories when searching
+      if (searchTerm !== '') {
+        document.querySelectorAll('.faq-category').forEach(cat => {
+          cat.style.display = 'block';
+        });
+      }
+    });
+
+    // Mobile menu toggle
+    document.querySelector('.mobile-menu').addEventListener('click', function() {
+      console.log('Mobile menu clicked');
+      // Add mobile menu functionality here
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.faq-category, .help-section').forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>

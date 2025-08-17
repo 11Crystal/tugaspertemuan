@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Strategic Partnerships - Worldwide Trade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004d99;
+      --secondary: #ff6b35;
+      --accent: #00d4aa;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --border: #e2e8f0;
+      --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55528 100%);
+      --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(0, 102, 204, 0.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--light);
+      color: var(--primary);
+      padding-left: 2rem;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Page Content Styles */
+    .page-content {
+      padding-top: 80px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .partner-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .partner-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s;
+    }
+
+    .partner-card:hover::before {
+      left: 100%;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .partner-logo {
+      width: 120px;
+      height: 80px;
+      background: var(--gradient-primary);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .partner-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .partner-type {
+      color: var(--secondary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+    }
+
+    .partner-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .partnership-benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .benefit-tag {
+      background: var(--light);
+      color: var(--text-primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .partner-categories {
+      background: var(--light);
+      padding: 4rem 2rem;
+      border-radius: 20px;
+      margin: 4rem 0;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .category-item {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .category-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .category-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-secondary);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.5rem;
+    }
+
+    .category-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .category-description {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .partnership-program {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 2rem;
+      border-radius: 20px;
+      text-align: center;
+      margin: 4rem 0;
+    }
+
+    .program-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-item {
+      text-align: center;
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-accent);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.5rem;
+    }
+
+    .feature-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-description {
+      opacity: 0.9;
+      font-size: 0.9rem;
+    }
+
+    .cta-section {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 4rem 2rem;
+      border-radius: 20px;
+      text-align: center;
+      margin: 4rem 0;
+    }
+
+    .cta-section h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .mobile-menu { display: flex; }
+      .partners-grid { grid-template-columns: 1fr; }
+      .categories-grid { grid-template-columns: 1fr; }
+      .program-features { grid-template-columns: repeat(2, 1fr); }
+      .partner-card { padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Worldwide Trade</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🏢 Company ▼</a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="history.html">Company History</a>
+            <a href="team.html">Our Team</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="careers.html">Careers</a>
+            <a href="awards.html">Awards & Recognition</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🛠️ Services ▼</a>
+          <div class="dropdown-menu">
+            <a href="global-sourcing.html">Global Sourcing</a>
+            <a href="logistics.html">Logistics & Shipping</a>
+            <a href="quality-assurance.html">Quality Assurance</a>
+            <a href="trade-finance.html">Trade Finance</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📦 Products ▼</a>
+          <div class="dropdown-menu">
+            <a href="products.html">All Products</a>
+            <a href="electronics.html">Electronics</a>
+            <a href="textiles.html">Textiles & Apparel</a>
+            <a href="machinery.html">Machinery</a>
+            <a href="chemicals.html">Chemicals</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📊 Resources ▼</a>
+          <div class="dropdown-menu">
+            <a href="market-insights.html">Market Insights</a>
+            <a href="trade-guides.html">Trade Guides</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="tools.html">Tools & Calculators</a>
+          </div>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+        <li><a href="quote.html" class="cta-button">Get Quote</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Content -->
+  <div class="page-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>></span>
+        <span>Strategic Partnerships</span>
+      </div>
+      <h1>Strategic Partnerships</h1>
+      <p>Building strong alliances with industry leaders to deliver exceptional value and comprehensive solutions for our clients worldwide.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Key Partners Section -->
+      <section>
+        <h2 class="section-title">Our Key Partners</h2>
+        <p class="section-subtitle">We collaborate with industry-leading organizations to provide comprehensive trade solutions and ensure the highest standards of service.</p>
+        
+        <div class="partners-grid">
+          <div class="partner-card">
+            <div class="partner-logo">GLOBAL SHIP</div>
+            <h3 class="partner-name">Global Shipping Alliance</h3>
+            <p class="partner-type">Logistics Partner</p>
+            <p class="partner-description">Leading international shipping and logistics provider with a network spanning over 200 ports worldwide. Specializes in container shipping and freight forwarding.</p>
+            <div class="partnership-benefits">
+              <span class="benefit-tag">Reduced Shipping Costs</span>
+              <span class="benefit-tag">Priority Booking</span>
+              <span class="benefit-tag">Real-time Tracking</span>
+            </div>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">QUAL ASSURE</div>
+            <h3 class="partner-name">QualityAssure International</h3>
+            <p class="partner-type">Quality Control Partner</p>
+            <p class="partner-description">Premier quality inspection and certification company with laboratories and inspection facilities across Asia, Europe, and the Americas.</p>
+            <div class="partnership-benefits">
+              <span class="benefit-tag">Certified Testing</span>
+              <span class="benefit-tag">Fast Turnaround</span>
+              <span class="benefit-tag">Compliance Reports</span>
+            </div>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">FINTECH</div>
+            <h3 class="partner-name">FinTech Solutions</h3>
+            <p class="partner-type">Financial Partner</p>
+            <p class="partner-description">Innovative financial technology company providing trade finance, payment processing, and risk management solutions for international trade.</p>
+            <div class="partnership-benefits">
+              <span class="benefit-tag">Flexible Financing</span>
+              <span class="benefit-tag">Secure Payments</span>
+              <span class="benefit-tag">Risk Mitigation</span>
+            </div>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">ASIA TRADE</div>
+            <h3 class="partner-name">Asia Trade Network</h3>
+            <p class="partner-type">Sourcing Partner</p>
+            <p class="partner-description">Extensive network of verified manufacturers and suppliers across Asia-Pacific region, specializing in electronics, textiles, and industrial products.</p>
+            <div class="partnership-benefits">
+              <span class="benefit-tag">Verified Suppliers</span>
+              <span class="benefit-tag">Competitive Pricing</span>
+              <span class="benefit-tag">Local Expertise</span>
+            </div>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">CUSTOM CLEAR</div>
+            <h3 class="partner-name">CustomsClear Pro</h3>
+            <p class="partner-type">Compliance Partner</p>
+            <p class="partner-description">Expert customs brokerage and trade compliance firm with deep knowledge of international trade regulations and documentation requirements.</p>
+            <div class="partnership-benefits">
+              <span class="benefit-tag">Customs Clearance</span>
+              <span class="benefit-tag">Trade Compliance</span>
+              <span class="benefit-tag">Documentation</span>
+            </div>
+          </div>
+
+          <div class="partner-card">
+            <div class="partner-logo">ECO SUSTAIN</div>
+            <h3 class="partner-name">EcoSustain Initiative</h3>
+            <p class="partner-type">Sustainability Partner</p>
+            <p class="partner-description">Environmental sustainability organization focused on promoting responsible trade practices and carbon footprint reduction in global supply chains.</p>
+            <div class="partnership-benefits">
+              <span class="benefit-tag">Green Logistics</span>
+              <span class="benefit-tag">Carbon Offsetting</span>
+              <span class="benefit-tag">Sustainable Sourcing</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Partnership Categories -->
+      <section class="partner-categories">
+        <h2 class="section-title">Partnership Categories</h2>
+        <p class="section-subtitle">Our diverse partnership ecosystem covers every aspect of international trade and business operations.</p>
+        
+        <div class="categories-grid">
+          <div class="category-item">
+            <div class="category-icon">🚢</div>
+            <h3 class="category-title">Logistics & Shipping</h3>
+            <p class="category-description">Strategic alliances with major shipping lines, freight forwarders, and logistics providers</p>
+          </div>
+
+          <div class="category-item">
+            <div class="category-icon">🏭</div>
+            <h3 class="category-title">Manufacturing Partners</h3>
+            <p class="category-description">Certified manufacturers and suppliers across key production regions worldwide</p>
+          </div>
+
+          <div class="category-item">
+            <div class="category-icon">💰</div>
+            <h3 class="category-title">Financial Services</h3>
+            <p class="category-description">Banks, financial institutions, and fintech companies for trade finance solutions</p>
+          </div>
+
+          <div class="category-item">
+            <div class="category-icon">⚖️</div>
+            <h3 class="category-title">Legal & Compliance</h3>
+            <p class="category-description">Law firms, compliance experts, and regulatory specialists for international trade law</p>
+          </div>
+
+          <div class="category-item">
+            <div class="category-icon">🔬</div>
+            <h3 class="category-title">Quality Assurance</h3>
+            <p class="category-description">Testing laboratories, inspection agencies, and certification bodies worldwide</p>
+          </div>
+
+          <div class="category-item">
+            <div class="category-icon">💻</div>
+            <h3 class="category-title">Technology Partners</h3>
+            <p class="category-description">Software providers, digital platforms, and tech innovators for trade automation</p>
+          </div>
+
+          <div class="category-item">
+            <div class="category-icon">🌍</div>
+            <h3 class="category-title">Regional Representatives</h3>
+            <p class="category-description">Local agents and representatives in key markets for on-ground support</p>
+          </div>
+
+          <div class="category-item">
+            <div class="category-icon">🏛️</div>
+            <h3 class="category-title">Government Relations</h3>
+            <p class="category-description">Trade associations, chambers of commerce, and government liaison partners</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Partnership Program -->
+      <section class="partnership-program">
+        <h2 class="section-title">Join Our Partnership Program</h2>
+        <p class="section-subtitle">Become part of our global network and unlock new opportunities for growth and collaboration.</p>
+        
+        <div class="program-features">
+          <div class="feature-item">
+            <div class="feature-icon">🤝</div>
+            <h3 class="feature-title">Mutual Benefits</h3>
+            <p class="feature-description">Share resources and expertise for mutual growth and success</p>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">📈</div>
+            <h3 class="feature-title">Business Growth</h3>
+            <p class="feature-description">Access new markets and expand your customer base through our network</p>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🎯</div>
+            <h3 class="feature-title">Targeted Opportunities</h3>
+            <p class="feature-description">Receive qualified leads and partnership opportunities</p>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🛠️</div>
+            <h3 class="feature-title">Support & Training</h3>
+            <p class="feature-description">Access to training programs and ongoing support from our team</p>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🏆</div>
+            <h3 class="feature-title">Recognition Program</h3>
+            <p class="feature-description">Partner recognition and awards for outstanding performance</p>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🌐</div>
+            <h3 class="feature-title">Global Network</h3>
+            <p class="feature-description">Connect with partners worldwide and expand your reach</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section">
+        <h2>Ready to Partner With Us?</h2>
+        <p>Join our growing network of strategic partners and discover how collaboration can drive success for both our organizations.</p>
+        <a href="contact.html" class="btn btn-white">Explore Partnership Opportunities</a>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="history.html">Company History</a></li>
+          <li><a href="team.html">Our Team</a></li>
+          <li><a href="leadership.html">Leadership</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="awards.html">Awards & Recognition</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="global-sourcing.html">Global Sourcing</a></li>
+          <li><a href="logistics.html">Logistics & Shipping</a></li>
+          <li><a href="quality-assurance.html">Quality Assurance</a></li>
+          <li><a href="trade-finance.html">Trade Finance</a></li>
+          <li><a href="consultation.html">Consultation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="electronics.html">Electronics</a></li>
+          <li><a href="textiles.html">Textiles & Apparel</a></li>
+          <li><a href="machinery.html">Machinery</a></li>
+          <li><a href="chemicals.html">Chemicals</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="market-insights.html">Market Insights</a></li>
+          <li><a href="trade-guides.html">Trade Guides</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="tools.html">Tools & Calculators</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="partnerships.html">Partnerships</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="news.html">News & Press</a></li>
+          <li><a href="events.html">Events</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="mailto:info@worldwidetrade.com">info@worldwidetrade.com</a></li>
+          <li><a href="tel:+1-555-TRADE-01">+1 (555) TRADE-01</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="quote.html">Get Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Worldwide Trade Co. All rights reserved. | <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all partner cards and category items
+    document.querySelectorAll('.partner-card, .category-item, .feature-item').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>

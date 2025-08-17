@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Machinery - Industrial Equipment & Solutions | Worldwide Trade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0066cc;
+      --primary-dark: #004d99;
+      --secondary: #ff6b35;
+      --accent: #00d4aa;
+      --dark: #1a1a1a;
+      --light: #f8fafc;
+      --white: #ffffff;
+      --text-primary: #2d3748;
+      --text-secondary: #718096;
+      --border: #e2e8f0;
+      --gradient-primary: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+      --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #e55528 100%);
+      --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--white);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .nav-dropdown { position: relative; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background: rgba(0, 102, 204, 0.1);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--shadow-xl);
+      padding: 1rem 0;
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--light);
+      color: var(--primary);
+      padding-left: 2rem;
+    }
+
+    .cta-button {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      width: 25px;
+      height: 3px;
+      background: var(--text-primary);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* Page Content Styles */
+    .page-content {
+      padding-top: 80px;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="machinery" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="%23ffffff" opacity="0.1"/><rect x="30" y="30" width="4" height="4" fill="%23ffffff" opacity="0.08"/><circle cx="40" cy="15" r="1.5" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23machinery)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .content-section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .machinery-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .machinery-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.1), transparent);
+      transition: left 0.5s;
+    }
+
+    .machinery-card:hover::before {
+      left: 100%;
+    }
+
+    .machinery-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .machinery-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .machinery-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      position: relative;
+      z-index: 2;
+    }
+
+    .machinery-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .machinery-features {
+      list-style: none;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .machinery-features li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+    }
+
+    .machinery-features li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-check {
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .btn-quote {
+      background: var(--gradient-secondary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-quote:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      background: white;
+      border: 2px solid var(--border);
+      color: var(--text-primary);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .filter-tab.active,
+    .filter-tab:hover {
+      background: var(--gradient-primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0;
+      margin: 4rem 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: var(--light);
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .cta-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .cta-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-section h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .mobile-menu { display: flex; }
+      .grid { grid-template-columns: 1fr; }
+      .filter-tabs { flex-direction: column; align-items: center; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav-container">
+      <a href="index.html" class="logo">Worldwide Trade</a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🏢 Company ▼</a>
+          <div class="dropdown-menu">
+            <a href="about.html">About Us</a>
+            <a href="history.html">Company History</a>
+            <a href="team.html">Our Team</a>
+            <a href="leadership.html">Leadership</a>
+            <a href="careers.html">Careers</a>
+            <a href="awards.html">Awards & Recognition</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">🛠️ Services ▼</a>
+          <div class="dropdown-menu">
+            <a href="global-sourcing.html">Global Sourcing</a>
+            <a href="logistics.html">Logistics & Shipping</a>
+            <a href="quality-assurance.html">Quality Assurance</a>
+            <a href="trade-finance.html">Trade Finance</a>
+            <a href="consultation.html">Consultation</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📦 Products ▼</a>
+          <div class="dropdown-menu">
+            <a href="products.html">All Products</a>
+            <a href="electronics.html">Electronics</a>
+            <a href="textiles.html">Textiles & Apparel</a>
+            <a href="machinery.html">Machinery</a>
+            <a href="chemicals.html">Chemicals</a>
+          </div>
+        </li>
+
+        <li class="nav-dropdown">
+          <a href="#" class="nav-link">📊 Resources ▼</a>
+          <div class="dropdown-menu">
+            <a href="market-insights.html">Market Insights</a>
+            <a href="trade-guides.html">Trade Guides</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="blog.html">Blog</a>
+            <a href="tools.html">Tools & Calculators</a>
+          </div>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+        <li><a href="quote.html" class="cta-button">Get Quote</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+        <div class="hamburger"></div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-content">
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a> / <a href="products.html">Products</a> / Machinery
+        </nav>
+        <h1>Industrial Machinery & Equipment</h1>
+        <p>Premium industrial machinery sourced from verified manufacturers worldwide. From manufacturing equipment to specialized tools, we provide comprehensive machinery solutions.</p>
+      </div>
+    </section>
+
+    <main class="main-content">
+      <!-- Filter Section -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-category="all">All Categories</button>
+        <button class="filter-tab" data-category="manufacturing">Manufacturing</button>
+        <button class="filter-tab" data-category="construction">Construction</button>
+        <button class="filter-tab" data-category="agricultural">Agricultural</button>
+        <button class="filter-tab" data-category="textile">Textile</button>
+        <button class="filter-tab" data-category="food">Food Processing</button>
+      </div>
+
+      <!-- Machinery Catalog -->
+      <section class="content-section">
+        <div class="grid" id="machinery-grid">
+          <!-- Manufacturing Equipment -->
+          <div class="machinery-card" data-category="manufacturing">
+            <div class="machinery-icon">🏭</div>
+            <h3 class="machinery-title">CNC Machining Centers</h3>
+            <p class="machinery-description">High-precision CNC machines for manufacturing complex components with exceptional accuracy and repeatability.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> Multi-axis machining capability</li>
+              <li><span class="feature-check">✓</span> Advanced control systems</li>
+              <li><span class="feature-check">✓</span> Tool change automation</li>
+              <li><span class="feature-check">✓</span> Quality assurance included</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <div class="machinery-card" data-category="manufacturing">
+            <div class="machinery-icon">⚡</div>
+            <h3 class="machinery-title">Industrial Presses</h3>
+            <p class="machinery-description">Heavy-duty hydraulic and mechanical presses for metal forming, stamping, and compression applications.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> Variable tonnage capacity</li>
+              <li><span class="feature-check">✓</span> Precision control systems</li>
+              <li><span class="feature-check">✓</span> Safety interlocks</li>
+              <li><span class="feature-check">✓</span> Custom tooling available</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <div class="machinery-card" data-category="manufacturing">
+            <div class="machinery-icon">🔧</div>
+            <h3 class="machinery-title">Assembly Line Equipment</h3>
+            <p class="machinery-description">Complete assembly line solutions including conveyors, workstations, and automated handling systems.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> Modular design</li>
+              <li><span class="feature-check">✓</span> Flexible configuration</li>
+              <li><span class="feature-check">✓</span> Integration support</li>
+              <li><span class="feature-check">✓</span> Training included</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <!-- Construction Equipment -->
+          <div class="machinery-card" data-category="construction">
+            <div class="machinery-icon">🚜</div>
+            <h3 class="machinery-title">Excavators & Loaders</h3>
+            <p class="machinery-description">Heavy construction equipment including excavators, wheel loaders, and bulldozers for all construction needs.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> Various size options</li>
+              <li><span class="feature-check">✓</span> Fuel efficient engines</li>
+              <li><span class="feature-check">✓</span> Advanced hydraulics</li>
+              <li><span class="feature-check">✓</span> Operator comfort features</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <div class="machinery-card" data-category="construction">
+            <div class="machinery-icon">🏗️</div>
+            <h3 class="machinery-title">Cranes & Lifting Equipment</h3>
+            <p class="machinery-description">Tower cranes, mobile cranes, and specialized lifting equipment for construction and industrial applications.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> High lifting capacity</li>
+              <li><span class="feature-check">✓</span> Safety systems</li>
+              <li><span class="feature-check">✓</span> Remote operation</li>
+              <li><span class="feature-check">✓</span> Installation support</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <div class="machinery-card" data-category="construction">
+            <div class="machinery-icon">🔨</div>
+            <h3 class="machinery-title">Concrete Equipment</h3>
+            <p class="machinery-description">Concrete mixers, pumps, and finishing equipment for residential and commercial construction projects.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> Various capacity options</li>
+              <li><span class="feature-check">✓</span> Durable construction</li>
+              <li><span class="feature-check">✓</span> Easy maintenance</li>
+              <li><span class="feature-check">✓</span> Spare parts available</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <!-- Agricultural Equipment -->
+          <div class="machinery-card" data-category="agricultural">
+            <div class="machinery-icon">🌾</div>
+            <h3 class="machinery-title">Harvesting Equipment</h3>
+            <p class="machinery-description">Modern combine harvesters, threshing machines, and crop processing equipment for efficient farming operations.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> High efficiency processing</li>
+              <li><span class="feature-check">✓</span> Grain quality preservation</li>
+              <li><span class="feature-check">✓</span> GPS navigation systems</li>
+              <li><span class="feature-check">✓</span> Maintenance training</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <div class="machinery-card" data-category="agricultural">
+            <div class="machinery-icon">🚜</div>
+            <h3 class="machinery-title">Tractors & Tillers</h3>
+            <p class="machinery-description">Agricultural tractors and soil preparation equipment for various farming applications and field sizes.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> Multiple horsepower options</li>
+              <li><span class="feature-check">✓</span> Fuel efficient engines</li>
+              <li><span class="feature-check">✓</span> Implement compatibility</li>
+              <li><span class="feature-check">✓</span> Operator comfort</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <div class="machinery-card" data-category="agricultural">
+            <div class="machinery-icon">💧</div>
+            <h3 class="machinery-title">Irrigation Systems</h3>
+            <p class="machinery-description">Advanced irrigation equipment including pivot systems, drip irrigation, and water management solutions.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> Water-efficient design</li>
+              <li><span class="feature-check">✓</span> Automated controls</li>
+              <li><span class="feature-check">✓</span> Weather monitoring</li>
+              <li><span class="feature-check">✓</span> Remote management</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <!-- Textile Equipment -->
+          <div class="machinery-card" data-category="textile">
+            <div class="machinery-icon">🧵</div>
+            <h3 class="machinery-title">Industrial Looms</h3>
+            <p class="machinery-description">High-speed weaving machines and specialized looms for textile manufacturing and fabric production.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> High production rates</li>
+              <li><span class="feature-check">✓</span> Quality fabric output</li>
+              <li><span class="feature-check">✓</span> Pattern versatility</li>
+              <li><span class="feature-check">✓</span> Maintenance support</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <div class="machinery-card" data-category="textile">
+            <div class="machinery-icon">✂️</div>
+            <h3 class="machinery-title">Cutting & Sewing Machines</h3>
+            <p class="machinery-description">Automated cutting systems and industrial sewing equipment for garment and textile manufacturing.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> Precision cutting technology</li>
+              <li><span class="feature-check">✓</span> High-speed operation</li>
+              <li><span class="feature-check">✓</span> Pattern recognition</li>
+              <li><span class="feature-check">✓</span> Operator training</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <div class="machinery-card" data-category="textile">
+            <div class="machinery-icon">🎨</div>
+            <h3 class="machinery-title">Dyeing & Finishing Equipment</h3>
+            <p class="machinery-description">Complete textile dyeing lines and finishing equipment for fabric treatment and color application.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> Consistent color matching</li>
+              <li><span class="feature-check">✓</span> Eco-friendly processes</li>
+              <li><span class="feature-check">✓</span> Water recycling systems</li>
+              <li><span class="feature-check">✓</span> Quality control integration</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <!-- Food Processing Equipment -->
+          <div class="machinery-card" data-category="food">
+            <div class="machinery-icon">🍞</div>
+            <h3 class="machinery-title">Food Processing Lines</h3>
+            <p class="machinery-description">Complete food processing systems including mixing, forming, baking, and packaging equipment.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> Food grade materials</li>
+              <li><span class="feature-check">✓</span> Hygiene compliance</li>
+              <li><span class="feature-check">✓</span> Automated processes</li>
+              <li><span class="feature-check">✓</span> HACCP certification</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <div class="machinery-card" data-category="food">
+            <div class="machinery-icon">❄️</div>
+            <h3 class="machinery-title">Refrigeration Systems</h3>
+            <p class="machinery-description">Industrial refrigeration and freezing systems for food preservation and cold storage applications.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> Energy efficient design</li>
+              <li><span class="feature-check">✓</span> Temperature control</li>
+              <li><span class="feature-check">✓</span> Monitoring systems</li>
+              <li><span class="feature-check">✓</span> Maintenance support</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+
+          <div class="machinery-card" data-category="food">
+            <div class="machinery-icon">📦</div>
+            <h3 class="machinery-title">Packaging Machinery</h3>
+            <p class="machinery-description">Automated packaging solutions including filling, sealing, labeling, and palletizing equipment.</p>
+            <ul class="machinery-features">
+              <li><span class="feature-check">✓</span> High-speed packaging</li>
+              <li><span class="feature-check">✓</span> Multiple format compatibility</li>
+              <li><span class="feature-check">✓</span> Quality inspection</li>
+              <li><span class="feature-check">✓</span> Integration capabilities</li>
+            </ul>
+            <a href="quote.html" class="btn-quote">Get Quote 💬</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statistics Section -->
+      <section class="stats-section">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">2,500+</div>
+            <div class="stat-label">Machines Sourced</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Verified Manufacturers</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">45</div>
+            <div class="stat-label">Countries Supplied</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Quality Approval Rate</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section">
+        <div class="cta-content">
+          <h2 class="cta-title">Need Custom Machinery Solutions?</h2>
+          <p class="cta-subtitle">Our experts can source specialized equipment tailored to your specific requirements. Get personalized recommendations and competitive quotes.</p>
+          <div class="cta-buttons">
+            <a href="quote.html" class="btn-quote">Request Quote 📋</a>
+            <a href="consultation.html" class="btn-quote" style="background: var(--gradient-accent);">Expert Consultation 🤝</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="history.html">Company History</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="leadership.html">Leadership</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="awards.html">Awards & Recognition</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="global-sourcing.html">Global Sourcing</a></li>
+            <li><a href="logistics.html">Logistics & Shipping</a></li>
+            <li><a href="quality-assurance.html">Quality Assurance</a></li>
+            <li><a href="trade-finance.html">Trade Finance</a></li>
+            <li><a href="consultation.html">Consultation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Products</h3>
+          <ul>
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="electronics.html">Electronics</a></li>
+            <li><a href="textiles.html">Textiles & Apparel</a></li>
+            <li><a href="machinery.html">Machinery</a></li>
+            <li><a href="chemicals.html">Chemicals</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="market-insights.html">Market Insights</a></li>
+            <li><a href="trade-guides.html">Trade Guides</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="tools.html">Tools & Calculators</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="mailto:info@worldwidetrade.com">info@worldwidetrade.com</a></li>
+            <li><a href="tel:+1-555-TRADE-01">+1 (555) TRADE-01</a></li>
+            <li><a href="quote.html">Get Quote</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Worldwide Trade Co. All rights reserved. | <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Filter functionality
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const machineryCards = document.querySelectorAll('.machinery-card');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        filterTabs.forEach(t => t.classList.remove('active'));
+        // Add active class to clicked tab
+        tab.classList.add('active');
+
+        const category = tab.dataset.category;
+
+        machineryCards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.5s ease-out';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all machinery cards
+    document.querySelectorAll('.machinery-card, .stat-item').forEach(card => {
+      observer.observe(card);
+    });
+
+    // Add fadeInUp animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
